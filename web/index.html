@@ -1,1 +1,797 @@
-/home/MM/Desktop/After_you_press_Run_v_0_5.html
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>After you press Run</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
+
+<style>/* Base: themes (Light, Paper, Blueprint), original components. Later files override this one. */
+
+:root{--bg:#F4F7FA;--pn:#fff;--ink:#14263A;--dim:#566B7D;--ln:#C9D4DE;--a:#0B7260;--ab:#DDF3EC;--b:#A65F00;--bb:#FCEBD0;--r:#B8321F;--rb:#FBE1DC;--p:#74348F;--pb:#EEE2F5;--f:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--m:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=dark]{--bg:#122D42;--pn:#173650;--ink:#DCEEF7;--dim:#8FB0C4;--ln:#2E5872;--a:#7BE0C4;--ab:#123F38;--b:#F0B25E;--bb:#3A3220;--r:#F0917A;--rb:#3A2620;--p:#E499CE;--pb:#33223A}
+*,*::before,*::after{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--f)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;max-width:1120px;margin:0 auto;padding:14px 18px}
+.top h1{margin:0;font-size:22px}.top small{color:var(--dim);display:block;font-size:13px}
+.wrap{display:grid;grid-template-columns:230px 1fr;gap:22px;max-width:1120px;margin:0 auto;padding:0 18px 40px}
+@media(max-width:780px){.wrap{grid-template-columns:1fr}.rail{display:flex;overflow-x:auto;gap:8px}.rail button{flex:0 0 auto}}
+.rail{display:flex;flex-direction:column;gap:8px;align-self:start}
+.rail button,.btn{font:600 14px var(--f);color:var(--ink);background:var(--pn);border:1.5px solid var(--ln);border-radius:10px;padding:9px 12px;text-align:left;cursor:pointer}
+.rail button[aria-current=true]{border-color:var(--a);background:var(--ab)}.rail button:disabled{opacity:.5;cursor:default}
+.rail .dn::after{content:" done";color:var(--a);font-weight:700}.rail small{display:block;font-weight:400;color:var(--dim)}
+.btn.pri{background:var(--a);border-color:var(--a);color:var(--pn)}.btn:focus-visible,.rail button:focus-visible,textarea:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.card{background:var(--pn);border:1.5px solid var(--ln);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+.card h2{margin:0 0 4px;font-size:26px;line-height:1.25}.lead{margin:6px 0 0;max-width:68ch}
+textarea{width:100%;min-height:150px;font:15px/1.6 var(--m);color:var(--ink);background:var(--bg);border:1.5px solid var(--ln);border-radius:10px;padding:10px 12px;resize:vertical}
+.er{margin-top:8px;padding:8px 12px;border-radius:10px;background:var(--rb);color:var(--r);font-weight:600}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.say{min-height:3.4em;font-size:20px;font-weight:600;padding:10px 14px;border-left:5px solid var(--a);background:var(--ab);border-radius:0 10px 10px 0}
+.viz{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px}.col{flex:1 1 230px;min-width:0}.col.wide{flex:2 1 360px}
+.lb{font:600 12px var(--m);color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}.dm{color:var(--dim)}
+.pile,.shelf,.desk{display:flex;gap:8px;min-height:44px}.pile{flex-direction:column-reverse;width:150px;border-bottom:3px solid var(--ink);padding-bottom:6px}.shelf,.desk{flex-wrap:wrap}
+.tl{font:600 17px var(--m);background:var(--pb);border:2px solid var(--p);border-radius:8px;padding:4px 12px;text-align:center}
+.bx{font:600 17px var(--m);border:2px solid var(--b);background:var(--bb);border-radius:8px;padding:2px 12px}.bx.lc{border-color:var(--a);background:var(--ab)}.bx b{display:block;font:500 12px var(--m);color:var(--dim)}
+.nw{animation:pop .4s cubic-bezier(.22,1,.36,1)}@keyframes pop{from{opacity:0;transform:translateY(-14px) scale(.9)}}
+.code{font:15px/1.7 var(--m);background:var(--bg);border-radius:10px;padding:6px 0}.code div{white-space:pre;padding:0 12px;border-left:5px solid transparent}.code i{color:var(--dim);font-style:normal;display:inline-block;width:2.2ch;margin-right:10px}.code .hl{background:var(--bb);border-color:var(--b)}
+.trail{display:flex;flex-wrap:wrap;gap:4px}.trail span{font:500 13px var(--m);border:1.5px solid var(--ln);border-radius:6px;padding:0 8px}.trail .cur{background:var(--b);color:var(--pn);border-color:var(--b)}
+.jmp{margin:8px 0;font-weight:600;color:var(--b)}
+ol.ins{margin:0;padding:0;list-style:none;font-size:15px}ol.ins li{padding:2px 10px;border-left:5px solid transparent}ol.ins li.on{background:var(--ab);border-color:var(--a)}ol.ins .op{font:500 11px var(--m);color:var(--dim);margin-right:8px}
+.scr{font:16px var(--m);background:#0e1b27;color:#8CF0C8;border-radius:10px;padding:8px 14px;min-height:46px;white-space:pre-wrap}
+.task{border:2px dashed var(--b);border-radius:12px;padding:12px 16px;margin-top:14px}.task.ok{border-style:solid;border-color:var(--a);background:var(--ab)}
+.aha{margin-top:12px;padding:12px 16px;border-radius:12px;background:var(--pb);border:2px solid var(--p);font-size:18px;animation:pop .5s}
+.nav{display:flex;justify-content:space-between;margin-top:14px}
+footer{max-width:1120px;margin:0 auto;padding:0 18px 30px;color:var(--dim);font-size:13px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wins{display:flex;flex-direction:column-reverse;gap:6px}.win{border:2px solid var(--b);background:var(--bb);border-radius:8px;padding:6px 12px;font:600 15px var(--m)}.win.top{border-color:var(--a);background:var(--ab)}.win small{display:block;font:400 12px var(--f);color:var(--dim)}
+.gate{border:2px solid var(--ln);border-radius:10px;padding:10px 14px;margin-bottom:8px}.gate.ok{border-color:var(--a);background:var(--ab)}.gate.bad{border-color:var(--r);background:var(--rb)}.gate.run{border-color:var(--b);background:var(--bb)}
+:root{--scb:#0e1b27;--sct:#8CF0C8;color-scheme:light}:root[data-theme=dark]{color-scheme:dark;--scb:#0A1A28;--sct:#7BE0C4}
+:root[data-theme=paper]{--bg:#F1E9D6;--pn:#FBF6E9;--ink:#1C3A52;--dim:#5C7A8C;--ln:#C9BE9E;--a:#2E7D6B;--ab:#DCEEE7;--b:#B5751F;--bb:#F3E2C4;--r:#B5432F;--rb:#F5DED6;--p:#8C3D74;--pb:#EBDCE6;--scb:#1C3A52;--sct:#F3E2C4}
+:root[data-theme=paper] body,:root[data-theme=dark] body{background-image:linear-gradient(color-mix(in srgb,var(--ln) 45%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ln) 45%,transparent) 1px,transparent 1px);background-size:28px 28px}
+.scr{background:var(--scb);color:var(--sct)}.card{box-shadow:0 10px 30px -22px rgba(20,38,58,.45)}body,.card,.rail button,.btn,.tl,.bx{transition:background-color .3s,border-color .3s,color .3s}
+.seg{display:inline-flex;border:1.5px solid var(--ln);border-radius:10px;overflow:hidden;background:var(--pn)}.seg button{font:600 13px var(--f);color:var(--ink);background:transparent;border:0;padding:7px 14px;cursor:pointer}.seg button[aria-pressed=true]{background:var(--ink);color:var(--pn)}.seg button:focus-visible{outline:3px solid var(--b);outline-offset:-3px}
+.bar{max-width:1084px;height:5px;margin:0 auto 14px;background:var(--ln);border-radius:5px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--a);transition:width .6s cubic-bezier(.22,1,.36,1)}
+@media(min-width:781px){.rail{position:sticky;top:12px}}
+.uh{margin-top:14px;border-top:1.5px dashed var(--ln);padding-top:10px}.uh summary{cursor:pointer;font-weight:600;color:var(--dim)}.uh .seg{margin:10px 0}
+.tk{display:inline-block;margin:3px;padding:2px 10px;border:2px solid var(--ln);border-radius:8px;font:500 15px var(--m)}.tk small{display:block;font:400 11px var(--f);color:var(--dim)}.tk.word{border-color:var(--p);background:var(--pb)}.tk.name{border-color:var(--a);background:var(--ab)}.tk.number,.tk.text{border-color:var(--b);background:var(--bb)}
+.lg{width:100%;border-collapse:collapse;font:13px var(--m)}.lg th,.lg td{text-align:left;padding:3px 8px;border-bottom:1px solid var(--ln)}.lg tr.on{background:var(--ab)}
+.obar{height:16px;border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;margin:4px 0}.obar i{display:block;height:100%;transition:width .6s cubic-bezier(.22,1,.36,1)}.sw{font-weight:600;cursor:pointer}
+.bst{position:fixed;pointer-events:none;z-index:9}.bst i{position:absolute;width:9px;height:9px;border-radius:2px;background:var(--c);animation:fly 1s cubic-bezier(.2,.8,.3,1) forwards}@keyframes fly{to{transform:translate(var(--x),calc(var(--y) + 200px)) rotate(420deg);opacity:0}}
+.code .nv{opacity:.5}.pk .bx{display:inline-block;margin:6px 8px 0 0}.pk .bx small{display:block;font:400 11px var(--f);color:var(--dim)}
+.row2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.card h3{margin:0 0 4px;font-size:20px}.wrap.ws{grid-template-columns:1fr}.ws .rail{display:none}
+.kw{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:10px}.kw label{font:600 12px var(--m);color:var(--dim)}.kw input{display:block;width:100%;margin-top:3px;font:15px var(--m);padding:6px 8px;border:1.5px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--ink)}
+.lw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:22px;align-items:start}@media(max-width:1020px){.lw{grid-template-columns:minmax(0,1fr)}}.lcol,.rcol{min-width:0}.code{overflow-x:auto}@media(min-width:1021px){.lcol{position:sticky;top:10px}}
+textarea{max-height:70vh;overflow-x:auto;white-space:pre}input[type=range]{accent-color:var(--a)}.dv{border:0;border-top:1.5px dashed var(--ln);width:100%;margin:6px 0}
+.rc{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}.rcb{text-align:left;font:400 14px/1.4 var(--f);color:var(--ink);background:var(--bg);border:1.5px solid var(--ln);border-radius:12px;padding:10px 12px;cursor:pointer}.rcb:hover,.rcb:focus-visible{border-color:var(--a);outline:none}.rcb b{display:block;font-size:16px}.rcb small{font:600 11px var(--m);color:var(--dim);text-transform:uppercase}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--pn);padding:10px 18px;border-radius:12px;font-weight:600;z-index:10;animation:pop .4s,out .4s 2.4s forwards}@keyframes out{to{opacity:0}}
+.lg code{font:14px var(--m)}
+@media(max-width:780px){.rail{flex-direction:row;padding-bottom:6px}.rail .dv{display:none}.rail button{white-space:nowrap}.rail small{display:none}}
+
+
+/* Standard: type scale, spacing, layout, lesson flow. Overrides base.css. Cascade order matters. */
+/* v3 standard: simple, roomy, big type */
+:root{--dim:#4B6173}:root[data-theme=dark]{--dim:#A9C4D6}:root[data-theme=paper]{--dim:#4F6577}
+body{font:18px/1.7 var(--f)}
+.top{max-width:1120px;margin:0 auto;padding:22px 24px 14px;gap:16px}.top h1{font-size:30px;letter-spacing:-.01em}.top small{font-size:15px}
+.bar{max-width:1072px;margin:0 auto 26px}.wrap{display:block;max-width:1120px;padding:0 24px 72px}.lcol{position:static!important}
+.rail{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px;margin:0 0 24px;position:static}
+.rail button{width:48px;height:48px;padding:0;text-align:center;font-size:18px;border-radius:50%}.rail button.dn{background:var(--a);color:var(--pn);border-color:var(--a)}.rail .dn::after{content:none}
+.rail button[aria-current=true]{background:var(--ink);color:var(--pn);border-color:var(--ink);box-shadow:0 0 0 4px var(--ab)}
+.card{padding:40px 44px;border-radius:24px;margin-bottom:28px}.kicker{font-size:15px;font-weight:600;color:var(--dim);margin-bottom:6px}
+.card h2{font-size:36px;line-height:1.2;margin:0 0 10px}.card h3{font-size:24px;margin:0 0 8px}.lead{font-size:20px;line-height:1.6;max-width:60ch;margin:8px 0 0}
+.lw{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;margin-top:28px}
+.lb{font:600 15px var(--f);text-transform:none;letter-spacing:0;color:var(--dim);margin:0 0 10px}
+textarea{font-size:18px;line-height:1.7;padding:18px 20px;min-height:220px;border-radius:14px}
+.btn{font:600 17px var(--f);min-height:48px;padding:10px 22px;border-radius:14px}.btn.pri{padding:10px 30px}.btn.tg[aria-pressed=true]{background:var(--ink);color:var(--pn)}
+.ctl{gap:12px;margin:16px 0}.tlr{display:flex;align-items:center;gap:14px;margin:6px 0 4px}.tlr input{flex:1}.tlr span{font-size:16px;white-space:nowrap}
+.say{font-size:24px;line-height:1.45;padding:20px 26px;min-height:5em;border-radius:0 16px 16px 0}.viz{gap:32px;margin-top:28px}
+.tl{font-size:22px;padding:8px 22px}.bx{font-size:20px;padding:6px 18px}.bx b{font:500 14px var(--f)}
+.code{font-size:18px;line-height:1.85}.code div{padding:1px 18px}ol.ins{font-size:18px}ol.ins li{padding:5px 14px}ol.ins .op{font-size:13px}
+.win{font-size:18px;padding:12px 18px}.win small{font-size:14px}.trail span{font-size:16px;padding:1px 10px}
+.scr{font-size:20px;padding:16px 20px;min-height:64px;border-radius:14px}.task{padding:22px 26px;font-size:19px;margin-top:28px}.aha{font-size:20px;padding:20px 26px}
+.seg button{font-size:16px;padding:10px 18px}.uh{margin-top:20px;padding-top:16px}.uh summary{font-size:17px}.lg{font-size:16px}.lg th,.lg td{padding:8px 12px}
+.rcb{font-size:16px;padding:16px 18px}.rcb b{font-size:19px}.rcb small{font:600 13px var(--f)}.kw label{font-size:14px}.kw input{font-size:17px;padding:10px 12px}
+.mn{position:relative}.mn summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center}.mn summary::-webkit-details-marker{display:none}
+.pop{position:absolute;right:0;top:58px;z-index:20;width:330px;background:var(--pn);border:1.5px solid var(--ln);border-radius:18px;padding:20px;box-shadow:0 22px 48px -20px rgba(0,0,0,.4)}
+.nav{margin-top:28px}.hero h1{font-size:46px;line-height:1.1;margin:0 0 12px}.hero .big{font-size:22px;max-width:32ch;line-height:1.5}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;list-style:none;padding:0;margin:14px 0 0}.how li{background:var(--bg);border-radius:16px;padding:22px;font-size:21px}.how b{display:block;font-size:36px;color:var(--a)}
+.lessons-list{list-style:none;padding:0;margin:0}.lessons-list li{display:flex;gap:18px;padding:13px 0;border-bottom:1px solid var(--ln);font-size:19px}.lessons-list b{min-width:5.5ch;color:var(--a)}
+@media(max-width:1020px){.lw{grid-template-columns:minmax(0,1fr);gap:32px}.card{padding:26px 22px}.card h2{font-size:30px}.hero h1{font-size:36px}.pop{right:auto;left:0}}
+@media(max-width:780px){.rail button{width:44px;height:44px}.top h1{font-size:26px}}
+.tk small,.chip small,small{font-size:14px}footer{font-size:15px}.pk .bx small{font-size:14px}
+
+/* v3.1 compact header, phone fit */
+.top{padding:16px 24px 10px}.top h1{font-size:28px;white-space:nowrap}.row2{gap:10px;align-items:center;flex-wrap:nowrap}
+.row2 .btn{min-height:44px;padding:8px 16px;font-size:16px}.row2 .seg button{padding:9px 14px;font-size:16px}.mn{display:flex}.mn summary{min-height:44px}
+.bar{margin:0 auto 16px}.rail{margin-bottom:18px}.card{padding:32px 40px}.card h2{font-size:32px}.lw{margin-top:20px;gap:44px}textarea{min-height:170px}
+@media(max-width:1100px){.top{flex-wrap:wrap}.row2{flex-wrap:wrap}}
+@media(max-width:780px){.top{padding:14px 16px 8px}.wrap{padding:0 14px 60px}.row2{width:100%}#vw{width:100%;overflow-x:auto}#vw button{padding:10px 11px;font-size:15px;white-space:nowrap}.card{padding:22px 18px}.card h2{font-size:27px}.lead{font-size:18px}.hero h1{font-size:32px}.say{font-size:21px}.how li{font-size:19px}.bar{margin-bottom:12px}}
+.mn summary{height:44px;line-height:1;align-self:center}
+.nav{display:flex;justify-content:flex-end;gap:12px}.nav #prv{margin-right:auto}
+.n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--pn);font:700 16px var(--f);margin-right:10px;flex:none}.task .n{margin-right:12px}
+.coach{font-weight:600;font-size:18px;background:var(--bb);padding:12px 18px;border-radius:12px;margin:16px 0 0;max-width:62ch;line-height:1.5}
+.pulse{animation:pls 1.7s ease-in-out infinite}@keyframes pls{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--a) 55%,transparent)}50%{box-shadow:0 0 0 10px transparent}}
+li[data-go]{cursor:pointer;border-radius:10px}li[data-go]:hover,li[data-go]:focus-visible{background:var(--bg);outline:none}
+.coach{max-width:none;padding:8px 16px;font-size:17px;margin-top:12px}textarea{min-height:112px}.lw{margin-top:16px}.card{padding-top:26px}.lb{margin-bottom:8px}
+[hidden]{display:none!important}
+.why{margin:12px 0 0;font-size:18px;line-height:1.6;padding:10px 14px;border-left:4px solid var(--b);background:var(--bb);border-radius:0 12px 12px 0}
+.term{border-bottom:2px dotted var(--a);cursor:help}#tip{position:absolute;z-index:40;width:320px;background:var(--ink);color:var(--pn);padding:14px 16px;border-radius:14px;font-size:16px;line-height:1.5;box-shadow:0 18px 40px -16px rgba(0,0,0,.5)}#tip p{margin:4px 0 0}#tip b{font-size:17px}
+.learn h3{margin:26px 0 10px;font-size:23px}.terms{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:0}.terms dt{font-weight:700}.terms dd{margin:0}
+.steps{margin:0;padding-left:1.4em}.steps li{margin:8px 0;font-size:19px;line-height:1.6;max-width:70ch}.key li{font-weight:600}.tw{overflow-x:auto}
+.pipe5{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:16px}.pst{background:var(--bg);border-radius:16px;padding:16px;position:relative}.pst .pn5{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--a);color:var(--pn);font-weight:700;margin-bottom:6px}.pst b{display:block;font-size:19px}.pst code{display:block;font:15px/1.5 var(--m);margin:8px 0;word-break:break-word;color:var(--ink)}.pst p{margin:0;font-size:16px;line-height:1.5}
+@media(max-width:780px){.terms{grid-template-columns:1fr}.terms dt{margin-top:6px}}
+.pst code{white-space:pre-wrap}
+
+@media(max-width:560px){#vw{flex-wrap:wrap;border-radius:18px;overflow:visible}#vw button{flex:1 1 30%}}
+
+/* Team additions: put new rules here. Loaded last, so they win. */
+.hg{display:grid;grid-template-columns:repeat(8,minmax(0,56px));gap:6px;margin:6px 0 12px}
+.hc{height:48px;border:2px dashed var(--ln);border-radius:8px;display:grid;place-items:center;font:600 14px var(--m);color:var(--ink)}
+.hc.u{border:2px solid var(--a);background:var(--ab)}.hc.g{border:2px dashed var(--b);background:var(--bb)}.hc.m{box-shadow:0 0 0 3px var(--a)}.hc.f{border:2px solid var(--r);background:var(--rb);color:var(--r)}
+.hl{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:16px;margin:0 0 10px}.hl span{display:inline-flex;align-items:center;gap:8px}.hc.sw{display:inline-block;width:22px;height:22px}
+.ol{margin:6px 0 0;padding-left:1.2em;font-size:17px;line-height:1.7}
+.ol{max-height:240px;overflow:auto}
+
+.hst{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:17px;margin:2px 0 10px}.hst b{font-weight:700}
+.phs{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px;padding:0;font-size:16px}.phs li{display:inline-flex;align-items:center;gap:8px;border:2px dashed var(--ln);border-radius:20px;padding:2px 14px 2px 4px;color:var(--dim)}.phs li span{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;border:2px solid var(--ln);font:600 14px var(--m)}.phs li.on{border:2px solid var(--a);background:var(--ab);color:var(--ink);font-weight:700}.phs li.on span{border-color:var(--a)}
+.hn{font-size:16px;margin:6px 0 10px;max-width:60ch}.ol:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.tl,.bx,.win{overflow-wrap:anywhere}
+.tl,.bx b,.gl{white-space:pre-line}.pile{width:200px}
+
+/* Multi-page lessons: stepper, page text, quiz, page navigation. Uses the colour tokens of base.css. */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pgs{margin:16px 0 6px}.pgs ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.pgs button{display:flex;align-items:center;gap:8px;font:600 15px var(--f);color:var(--ink);background:var(--pn);border:1.5px solid var(--ln);border-radius:999px;padding:5px 14px 5px 6px;cursor:pointer}
+.pgs .pn{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:2px solid var(--ln);font:600 14px var(--m)}
+.pgs button.v .pn{background:var(--ab);border-color:var(--a)}
+.pgs button[aria-current=step]{border-color:var(--a);background:var(--ab);font-weight:700}.pgs button[aria-current=step] .pn{background:var(--a);border-color:var(--a);color:var(--pn)}
+.pgs button:focus-visible,.opt:focus-visible,.qc:focus-visible,#pgh:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+@media(max-width:560px){.pgs .pt{display:none}.pgs button[aria-current=step] .pt{display:inline}.pgs button{padding:5px 8px 5px 6px}}
+.pgx{margin:14px 0 4px}.pgx h3{margin:6px 0 10px;font-size:24px}.pgx h4{margin:18px 0 8px;font-size:19px}
+.pgp{max-width:62ch;margin:0 0 12px;font-size:19px}.look{max-width:62ch;margin:0 0 8px;padding:10px 14px;background:var(--bb);border-left:4px solid var(--b);border-radius:8px}
+.pgsee{margin:14px 0 6px;padding:14px;border:1.5px solid var(--ln);border-radius:12px;background:var(--bg)}.pgsee figcaption{margin-top:8px}.pgsee .viz{margin:0}
+.qz{max-width:70ch}.qq{font-size:21px;margin:6px 0 10px}
+.qc{font:16px/1.7 var(--m);background:var(--bg);border:1.5px solid var(--ln);border-radius:10px;padding:10px 14px;overflow-x:auto;margin:0 0 12px}.qc .ln{display:inline-block;width:2.2em;color:var(--dim)}
+.qo{display:grid;gap:10px;margin:8px 0 12px}
+.opt{font:600 17px/1.4 var(--f);text-align:left;color:var(--ink);background:var(--pn);border:2px solid var(--ln);border-radius:12px;padding:12px 16px;cursor:pointer}
+.opt:disabled{cursor:default;opacity:1}.opt.ok{border-color:var(--a);background:var(--ab)}.opt.no{border-color:var(--r);background:var(--rb)}.opt .tag{margin-left:6px}
+.fb{margin:8px 0 10px;padding:10px 14px;border-radius:8px;border-left:4px solid var(--ln)}.fb.ok{background:var(--ab);border-color:var(--a)}.fb.no{background:var(--rb);border-color:var(--r)}
+.pnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0}.pnav .dm{font-size:16px}
+/* what each page type shows */
+.card[data-pg=idea] .lw,.card[data-pg=quiz] .lw,.card[data-pg=recap] .lw{display:none}
+.card[data-pg]:not([data-pg=try]) #task,.card[data-pg]:not([data-pg=try]) #aha{display:none!important}
+.card[data-pg]:not([data-pg=deep])>details.uh{display:none}
+.hm{background:linear-gradient(135deg,var(--ab),var(--pb))}.hk{display:inline-block;margin-bottom:10px;padding:3px 12px;font:700 13px var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--a);background:var(--pn);border-radius:20px}
+.hall{display:flex;align-items:center;gap:14px;margin-top:18px;font-size:15px}.hall .pbar{flex:1;max-width:340px}
+.pbar{display:block;height:8px;background:var(--ln);border-radius:8px;overflow:hidden}.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--p));border-radius:8px;transition:width .6s cubic-bezier(.22,1,.36,1)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+.ft,.cc{display:flex;flex-direction:column;gap:3px;text-align:left;font:inherit;color:var(--ink);background:var(--pn);border:1.5px solid var(--ln);border-radius:14px;padding:14px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.ft span{font-size:26px}.ft small{color:var(--dim)}.ft:hover,.cc:hover{transform:translateY(-3px);border-color:var(--a);box-shadow:0 12px 26px -16px rgba(20,38,58,.5)}
+.lg3{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:15px;color:var(--dim)}.lg3 b{color:var(--ink)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:16px}
+.cc{gap:6px;border-radius:16px;padding:16px;animation:hup .5s both;animation-delay:var(--d)}.cc .ci{font-size:30px}.cc .dm{font-size:14px;line-height:1.4}.cc .go{margin-top:2px;font:700 14px var(--f);color:var(--a)}
+.dots{display:flex;align-items:center;gap:6px}.dots i{width:12px;height:12px;border-radius:50%;border:2px solid var(--a)}.dots i.on{background:var(--a)}.dots small{margin-left:4px;color:var(--dim)}
+@keyframes hup{from{opacity:0;transform:translateY(14px)}}
+.lvs{margin:4px 0 14px;padding:12px 14px;border:1.5px solid var(--ln);border-radius:12px;background:var(--bg)}.lvh{display:flex;justify-content:space-between;margin-bottom:6px;font-size:15px}.lvb{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lvb .btn span{display:inline-grid;place-items:center;width:22px;height:22px;margin-right:4px;border-radius:50%;background:var(--ab);color:var(--a);font-size:13px}.lvb .btn.on{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+body{background:radial-gradient(1000px 620px at 6% -8%,rgba(11,114,96,.18),transparent 60%),radial-gradient(900px 600px at 100% 4%,rgba(116,52,143,.15),transparent 58%),radial-gradient(1000px 700px at 55% 112%,rgba(255,170,90,.20),transparent 60%),var(--bg);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(20,38,58,.09) 1.3px,transparent 1.3px);background-size:26px 26px;-webkit-mask-image:linear-gradient(#000,transparent 80%);mask-image:linear-gradient(#000,transparent 80%)}
+body::after{content:"";position:fixed;z-index:-1;pointer-events:none;width:46vmax;height:46vmax;right:-14vmax;top:-14vmax;border-radius:50%;background:radial-gradient(circle,rgba(11,114,96,.20),transparent 65%);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-8vmax,9vmax) scale(1.18)}}
+:root[data-theme=dark]{--bg:#1F5379;--pn:#296890;--ln:#4C86AE;--dim:#C3DCEC}
+:root[data-theme=dark] body::before{background-image:radial-gradient(rgba(255,255,255,.10) 1.3px,transparent 1.3px)}
+.card{background:color-mix(in srgb,var(--pn) 90%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hm{background:linear-gradient(135deg,color-mix(in srgb,var(--a) 24%,var(--pn)),color-mix(in srgb,var(--p) 20%,var(--pn)) 58%,color-mix(in srgb,var(--b) 26%,var(--pn)));border-color:transparent;box-shadow:0 22px 50px -26px rgba(20,38,58,.55)}
+.hm h1{background:linear-gradient(90deg,var(--a),var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.qcard{border-top:4px solid var(--p)}
+</style></head><body>
+<div class="top"><div><h1>After you press Run</h1><small id="prog"></small></div><div class="row2"><div class="seg" id="vw" role="group" aria-label="Sections"><button data-v="s" aria-pressed="false">Home</button><button data-v="l" aria-pressed="false">Lessons</button><button data-v="p" aria-pressed="false">Practice</button><button data-v="w" aria-pressed="false">Customize</button><button data-v="a" aria-pressed="false">Info</button></div><button class="btn" id="lvl" title="Your badges"></button><details class="mn"><summary class="btn">Settings</summary><div class="pop"><div class="lb">Colors</div><div class="seg" id="th" role="group" aria-label="Theme"></div><div class="lb" style="margin-top:18px">My progress</div><div class="ctl" style="margin:0"><button class="btn" id="sv">Save to file</button><label class="btn">Load from file<input type="file" id="ld" accept=".json" hidden></label></div></div></details></div></div><div class="bar"><i id="pb"></i></div>
+<div class="wrap"><nav class="rail" id="rail" aria-label="Lessons"></nav><main id="main"></main></div>
+<footer>Runs entirely in your browser. The compiler follows the design of clox from Crafting Interpreters by Robert Nystrom (MIT licence), the reference we checked it against.</footer>
+<script>// ENGINE. Scanner: source text -> tokens. Also the keyword renaming table (Customize). Pure JS, no DOM.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const ER=(l,m)=>{const e=new Error(m);e.line=l;return e};
+const KW=new Set('and class else false for fun if nil or print return super this true var while'.split(' '));
+let LEX={},AL={},REN=new Set();
+const mk=()=>{AL={};REN=new Set();for(const k in LEX)if(LEX[k]){AL[LEX[k]]=k;REN.add(k)}};
+function scan(s){const t=[];let i=0,l=1;const tk=(k,j)=>{t.push({k,x:s.slice(i,j),line:l,a:i,b:j});i=j};
+ while(i<s.length){const c=s[i];
+  if(c==='\n'){l++;i++}else if(/\s/.test(c))i++;
+  else if(c==='/'&&s[i+1]==='/'){while(i<s.length&&s[i]!=='\n')i++}
+  else if(/\d/.test(c)){let j=i;while(/\d/.test(s[j]||''))j++;if(s[j]==='.'&&/\d/.test(s[j+1]||''))for(j++;/\d/.test(s[j]||'');)j++;tk('number',j)}
+  else if(/[\p{L}_]/u.test(c)){let j=i;while(/[\p{L}\p{N}\p{M}_]/u.test(s[j]||''))j++;const w=s.slice(i,j);tk(AL[w]||(KW.has(w)&&!REN.has(w)?w:'identifier'),j)}
+  else if(c==='"'){let j=i+1;while(j<s.length&&s[j]!=='"')j++;if(j>=s.length)throw ER(l,'This text starts with a quote but has no closing quote.');tk('string',j+1)}
+  else{const d=s.slice(i,i+2);if(['!=','==','<=','>='].includes(d))tk(d,i+2);else if('(){},.-+;/*!=<>'.includes(c))tk(c,i+1);else throw ER(l,`I do not understand "${c}".`)}}
+ tk('eof',s.length);return t}
+
+// ENGINE. Compiler: tokens -> bytecode (one pass, like clox). Pure JS, no DOM.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+function compile(src){
+ const T=scan(src);let code=[],K=[],loc=[{n:'',d:0}],p=0,dp=0,fnd=0,fk='';const ST=[{loc,ups:[]}],CC=[];
+ const pk=()=>T[p],ad=()=>T[p++],ck=k=>T[p].k===k,mt=k=>ck(k)&&(ad(),1),
+ em=(op,arg,nm,tok)=>{code.push({op,arg,nm,tok,line:T[Math.max(0,p-1)].line,sc:loc.slice(1).map(x=>x.n)});return code.length-1},
+ cn=v=>K.push(v)-1,nd=(k,m)=>{if(!ck(k))throw ER(k===';'?T[Math.max(0,p-1)].line:T[p].line,m);return ad()},
+ PR={'(':6,'.':6,'or':.2,'and':.4,'==':1,'!=':1,'<':2,'>':2,'<=':2,'>=':2,'+':3,'-':3,'*':4,'/':4},
+ BO={'+':['ADD'],'-':['SUBTRACT'],'*':['MULTIPLY'],'/':['DIVIDE'],'==':['EQUAL'],'!=':['EQUAL','NOT'],'<':['LESS'],'>':['GREATER'],'<=':['GREATER','NOT'],'>=':['LESS','NOT']},
+ rs=n=>{for(let i=loc.length-1;i>=0;i--)if(loc[i].n===n)return i;return -1},
+ jmp=op=>em(op,0),pt=j=>{code[j].arg=code.length},
+ es=()=>{dp--;while(loc.length>1&&loc[loc.length-1].d>dp){const l=loc.pop();em(l.cap?'CLOSE_UPVALUE':'POP',undefined,l.n)}},
+ au=(s,ix,lc,n)=>{let k=s.ups.findIndex(u=>u.i===ix&&u.l===lc);if(k<0)k=s.ups.push({i:ix,l:lc,n})-1;return k},
+ ru=(si,n)=>{if(si===0)return -1;const en=ST[si-1];let l=-1;for(let i=en.loc.length-1;i>=0;i--)if(en.loc[i].n===n){l=i;break}
+  if(l>=0){en.loc[l].cap=1;return au(ST[si],l,true,n)}const u=ru(si-1,n);return u>=0?au(ST[si],u,false,n):-1},
+ vr=(t,ca)=>{const s=rs(t.x);let a=s,L='LOCAL';if(s<0){a=ru(ST.length-1,t.x);if(a>=0)L='UPVALUE';else{a=cn(t.x);L='GLOBAL'}}
+  if(ca&&mt('=')){ex(0);em('SET_'+L,a,t.x,t)}else em('GET_'+L,a,t.x,t)},
+ al=()=>{let c=0;if(!ck(')'))do{ex(0);c++}while(mt(','));nd(')','I expected ) after the values you pass in.');return c};
+ function ex(min){const t=ad(),ca=min<=0;
+  switch(t.k){
+   case'number':em('CONSTANT',cn(+t.x),undefined,t);break;
+   case'string':em('CONSTANT',cn(t.x.slice(1,-1)),undefined,t);break;
+   case'true':em('TRUE',undefined,undefined,t);break;case'false':em('FALSE',undefined,undefined,t);break;case'nil':em('NIL',undefined,undefined,t);break;
+   case'(':ex(0);nd(')','I expected a closing ) here.');break;
+   case'-':case'!':ex(5);em(t.k==='-'?'NEGATE':'NOT',undefined,undefined,t);break;
+   case'identifier':vr(t,ca);break;
+   case'this':if(!CC.length)throw ER(t.line,'You can only use this inside a class.');vr({k:'identifier',x:'this',line:t.line},false);break;
+   case'super':{if(!CC.length)throw ER(t.line,'You can only use super inside a class.');if(!CC[CC.length-1].sup)throw ER(t.line,'This class has no superclass, so super cannot be used.');
+    nd('.','I expected a . after super.');const mn=nd('identifier','I expected a method name after super.').x,nc=cn(mn);vr({k:'identifier',x:'this',line:t.line},false);
+    if(mt('(')){const c=al();vr({k:'identifier',x:'super',line:t.line},false);em('SUPER_INVOKE',nc,mn,t);code[code.length-1].argc=c}else{vr({k:'identifier',x:'super',line:t.line},false);em('GET_SUPER',nc,mn,t)}break}
+   default:throw ER(t.line,t.k==='eof'?'The code ended, but a value is missing.':`A value is missing here. Found "${t.x}".`)}
+  for(let o;PR[(o=pk()).k]>=min;){ad();if(o.k==='and'){const j=jmp('JUMP_IF_FALSE');em('POP');ex(.5);pt(j)}else if(o.k==='or'){const a=jmp('JUMP_IF_FALSE'),b=jmp('JUMP');pt(a);em('POP');ex(.3);pt(b)}else if(o.k==='.'){const mn=nd('identifier','I expected a name after the dot.').x,nc=cn(mn);if(ca&&mt('=')){ex(0);em('SET_PROPERTY',nc,mn,o)}else if(mt('(')){const c=al();em('INVOKE',nc,mn,o);code[code.length-1].argc=c}else em('GET_PROPERTY',nc,mn,o)}else if(o.k==='('){em('CALL',al(),undefined,o)}else{ex(PR[o.k]+1);BO[o.k].forEach(x=>em(x,undefined,undefined,o))}}
+  if(ca&&ck('='))throw ER(pk().line,'You can only store a value into a variable name.')}
+ function vd(){const nt=T[p],n=nd('identifier','I expected a name after var.').x;let g=0;
+  if(dp>0){if(loc.some(l=>l.d===dp&&l.n===n))throw ER(T[p-1].line,`You already made a variable called "${n}" in this block.`);loc.push({n,d:-1})}else g=cn(n);
+  if(mt('='))ex(0);else em('NIL');nd(';','I expected a ; after the variable.');
+  if(dp>0)loc[loc.length-1].d=dp;else em('DEFINE_GLOBAL',g,n,nt)}
+ function st(){
+  if(ck('print')){const pt=ad();ex(0);nd(';','I expected a ; after the value to print.');em('PRINT',undefined,undefined,pt)}
+  else if(mt('if')){nd('(','I expected ( after if.');ex(0);nd(')','I expected ) after the condition.');const a=jmp('JUMP_IF_FALSE');em('POP');st();const b=jmp('JUMP');pt(a);em('POP');if(mt('else'))st();pt(b)}
+  else if(mt('while')){const s=code.length;nd('(','I expected ( after while.');ex(0);nd(')','I expected ) after the condition.');const x=jmp('JUMP_IF_FALSE');em('POP');st();em('LOOP',s);pt(x);em('POP')}
+  else if(mt('for')){dp++;nd('(','I expected ( after for.');
+   if(mt(';')){}else if(mt('var'))vd();else{ex(0);nd(';','I expected a ; here.');em('POP')}
+   let s=code.length,x=-1;
+   if(!mt(';')){ex(0);nd(';','I expected a ; after the loop condition.');x=jmp('JUMP_IF_FALSE');em('POP')}
+   if(!mt(')')){const b=jmp('JUMP'),i=code.length;ex(0);em('POP');nd(')','I expected ) after the for clauses.');em('LOOP',s);s=i;pt(b)}
+   st();em('LOOP',s);if(x>=0){pt(x);em('POP')}es()}
+  else if(mt('return')){if(!fnd)throw ER(T[p-1].line,'return only works inside a function.');if(mt(';')){if(fk==='init')em('GET_LOCAL',0,'this');else em('NIL')}else{if(fk==='init')throw ER(T[p-1].line,'An init method cannot return a value.');ex(0);nd(';','I expected a ; after the returned value.')}em('RETURN')}
+  else if(mt('{')){dp++;while(!ck('}')&&!ck('eof'))de();nd('}','I expected a } to close this block.');es()}
+  else{ex(0);nd(';','I expected a ; at the end of this line.');em('POP')}}
+ function fb(n,kind){ST.push({loc:[{n:kind==='fn'?'':'this',d:0}],ups:[]});const sv={code,K,dp,fk},f={name:n,code:[],K:[],arity:0,pn:[]};code=f.code;K=f.K;loc=ST[ST.length-1].loc;dp=1;fnd++;fk=kind;
+  nd('(','I expected ( after the name.');
+  if(!ck(')'))do{const a=nd('identifier','I expected a name for each input.').x;f.arity++;f.pn.push(a);loc.push({n:a,d:1})}while(mt(','));
+  nd(')','I expected ) after the inputs.');nd('{','I expected { before the body.');
+  while(!ck('}')&&!ck('eof'))de();nd('}','I expected } to close the body.');if(kind==='init')em('GET_LOCAL',0,'this');else em('NIL');em('RETURN');
+  fnd--;f.ups=ST.pop().ups;({code,K,dp,fk}=sv);loc=ST[ST.length-1].loc;em('CLOSURE',cn(f),n);code[code.length-1].ups=f.ups}
+ function fd(){const nt=T[p],n=nd('identifier','I expected a function name after fun.').x;let g=0;
+  if(dp>0)loc.push({n,d:dp});else g=cn(n);
+  fb(n,'fn');if(dp===0)em('DEFINE_GLOBAL',g,n,nt)}
+ function cd(){const kt=T[p-1],nt=T[p],n=nd('identifier','I expected a class name.').x,nc=cn(n);
+  if(dp>0){if(loc.some(l=>l.d===dp&&l.n===n))throw ER(T[p-1].line,`You already made a variable called "${n}" in this block.`);loc.push({n,d:-1})}
+  em('CLASS',nc,n,kt);if(dp>0)loc[loc.length-1].d=dp;else em('DEFINE_GLOBAL',nc,n,nt);
+  const cc={sup:false},ln=T[p-1].line;CC.push(cc);
+  if(mt('<')){const sn=nd('identifier','I expected a superclass name after <.').x;if(sn===n)throw ER(ln,'A class cannot inherit from itself.');vr({k:'identifier',x:sn,line:ln},false);dp++;loc.push({n:'super',d:dp});vr({k:'identifier',x:n,line:ln,syn:1},false);em('INHERIT',undefined,undefined,T[p-2]);cc.sup=true}
+  vr({k:'identifier',x:n,line:ln,syn:1},false);nd('{','I expected { before the class body.');
+  while(!ck('}')&&!ck('eof'))mh();nd('}','I expected } after the class body.');em('POP');if(cc.sup)es();CC.pop()}
+ function mh(){const nt=T[p],n=nd('identifier','I expected a method name.').x,nc=cn(n);fb(n,n==='init'?'init':'method');em('METHOD',nc,n,nt)}
+ function de(){if(mt('var'))vd();else if(mt('fun'))fd();else if(mt('class'))cd();else st()}
+ while(!ck('eof'))de();em('NIL');em('RETURN');return{f:{name:'script',code,K,arity:0,pn:[]},T}}
+
+// ENGINE. Virtual machine: runs bytecode, records every step in a log for the pictures. Pure JS, no DOM.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const isS=v=>typeof v==='string'||!!(v&&v.kind==='str'),sv=v=>typeof v==='string'?v:v.s,fv=v=>v===null?'nil':isS(v)?sv(v):v&&v.kind==='class'?v.name:v&&v.kind==='inst'?v.cls.name+' instance':v&&v.kind==='bound'?'<fn '+v.method.name+'>':v&&v.code?'<fn '+v.name+'>':String(v),sh=v=>isS(v)?'"'+sv(v)+'"':fv(v);
+function run(P,G0,H){const st=[],G={...(G0||{})},out=[],log=[],fr=[{f:P.f,ip:0,base:-1}],open=[],cls=[];let n=0,uid=0;
+ const tf=v=>v===null||v===false,RE=(c,m)=>{const e=new Error(m);e.line=c.line;return e},num=(c,a,b)=>{if(typeof a!=='number'||typeof b!=='number')throw RE(c,'This needs numbers.')},
+ snap=(F,ip,c,say,jump,hx)=>log.push({hp:H?hsnap(hx):undefined,f:F.f,i:ip,st:st.slice(),G:{...G},o:out.length,say,line:c.line,jump,bs:F.base,fr:fr.map(m=>({n:m.f.name,b:m.base,f:m.f})),cls:cls.map(k=>({n:k.name,uv:k.uv.map(u=>({n:u.n,open:u.open,v:u.open?st[u.slot]:u.val}))})),obs:objs.map(o=>o.kind==='class'?{id:o.id,k:'class',n:o.name,m:Object.keys(o.methods),s:o.sup&&o.sup.name}:{id:o.id,k:'inst',c:o.cls.name,f:Object.entries(o.fields)})}),
+ cap=(s,nm)=>{let u=open.find(x=>x.slot===s);if(!u){u={id:++uid,n:nm,open:true,slot:s,val:null};open.push(u)}return u},
+ closeFrom=lv=>{for(let k=open.length-1;k>=0;k--)if(open[k].slot>=lv){const u=open[k];u.val=st[u.slot];u.open=false;open.splice(k,1)}};
+ let oid=0;const objs=[],openFrame=(fn,k,c,F,ip)=>{if(fn.arity!==k)throw RE(c,`${fn.name} wants ${fn.arity} value${fn.arity===1?'':'s'} but got ${k}.`);if(fr.length>=64)throw RE(c,'Too many calls (limit 64). Does a function call itself forever?');F.ip=ip+1;fr.push({f:fn,ip:0,base:st.length-k-1})},
+ bind=(kl,nm,c,msg)=>{const m=kl.methods[nm];if(!m)throw RE(c,msg||`This object has no method called "${nm}".`);return reg({kind:'bound',recv:st[st.length-1],method:m},c)},
+ callValue=(f2,k,c,F,ip)=>{if(f2&&f2.kind==='class'){const ins={kind:'inst',id:++oid,cls:f2,fields:{}};objs.push(ins);reg(ins,c);st[st.length-1-k]=ins;const ini=f2.methods.init;if(ini){openFrame(ini,k,c,F,ip);return true}if(k!==0)throw RE(c,`${f2.name} wants 0 values but got ${k}.`);return false}
+  if(f2&&f2.kind==='bound'){st[st.length-1-k]=f2.recv;openFrame(f2.method,k,c,F,ip);return true}
+  if(f2&&f2.code){openFrame(f2,k,c,F,ip);return true}throw RE(c,'Only functions and classes can be called.')};
+ let cF=null,cIp=0,hid=0,gcs=0;const heap=[],free=H?Array.from({length:H.cells},(_,i)=>i):[],strs=new Map();
+ const cellsOf=o=>o.kind==='str'?1+Math.floor(o.s.length/8):(o.kind==='class'||o.kind==='inst')?2:1,
+ lab=o=>o.kind==='str'?'"'+o.s.slice(0,6)+(o.s.length>6?'...':'')+'"':o.kind==='closure'?'<fn '+o.name+'>':o.kind==='class'?o.name:o.kind==='inst'?o.cls.name+' object':'method '+o.method.name,
+ reach=()=>{const m=new Set(),mk=v=>{if(!v||typeof v!=='object'||!v.hid||m.has(v))return;m.add(v);
+   if(v.kind==='closure')v.uv.forEach(u=>mk(u.open?st[u.slot]:u.val));else if(v.kind==='class'){Object.values(v.methods).forEach(mk);mk(v.sup)}else if(v.kind==='inst'){mk(v.cls);Object.values(v.fields).forEach(mk)}else if(v.kind==='bound'){mk(v.recv);mk(v.method)}};
+  st.forEach(mk);Object.values(G).forEach(mk);fr.forEach(m2=>mk(m2.f));return m},
+ hsnap=hx=>{const m=hx&&hx.m||reach(),by=new Map(),add=(v,l)=>{if(v&&typeof v==='object'&&v.hid){const a=by.get(v)||[];if(!a.includes(l))a.push(l);by.set(v,a)}};
+  Object.entries(G).forEach(([n,v])=>add(v,'variable '+n+' (shelf)'));st.forEach(v=>add(v,'the pile'));fr.forEach(m2=>add(m2.f,'a running function'));
+  heap.forEach(o=>{if(!m.has(o))return;const w='#'+o.hid;if(o.kind==='closure')o.uv.forEach(u=>add(u.open?st[u.slot]:u.val,w));else if(o.kind==='class'){Object.values(o.methods).forEach(x=>add(x,w));add(o.sup,w)}else if(o.kind==='inst'){add(o.cls,w);Object.values(o.fields).forEach(x=>add(x,w))}else if(o.kind==='bound'){add(o.recv,w);add(o.method,w)}});
+  return{cells:H.cells,gc:H.gc,used:H.cells-free.length,gcs,made:hid,ph:hx&&hx.ph,g:hx&&hx.g||[],o:heap.map(o=>({id:o.hid,k:o.kind,l:lab(o),c:o.cells.slice(),r:m.has(o),h:m.has(o)?(by.get(o)||[]):[]}))}},
+ collect=()=>{const F0=cF,c0=F0.f.code[cIp];snap(F0,cIp,c0,'The memory is full. The garbage collector starts. It looks for objects the program can still reach.',false,{ph:'start'});
+  const m=reach();snap(F0,cIp,c0,`Mark: the stack and the global variables lead to ${m.size} object${m.size===1?'':'s'}. They stay.`,false,{ph:'mark',m});
+  const dead=heap.filter(o=>!m.has(o));let n=0;dead.forEach(o=>{n+=o.cells.length;free.push(...o.cells);if(o.kind==='str')strs.delete(o.s);heap.splice(heap.indexOf(o),1)});free.sort((a,b)=>a-b);gcs++;
+  snap(F0,cIp,c0,`Sweep: ${dead.length} unused object${dead.length===1?'':'s'} freed (${n} cell${n===1?'':'s'}). The program goes on.`,false,{ph:'sweep',m,g:dead.map(o=>({id:o.hid,l:lab(o),c:o.cells.slice()}))})},
+ reg=(o,c)=>{if(!H)return o;const n=cellsOf(o);if(free.length<n&&H.gc)collect();if(free.length<n)throw RE(c,H.gc?'Out of memory. The heap is full of objects the program still uses.':'Out of memory. The heap is full, and nothing is ever freed here.');o.hid=++hid;o.cells=free.splice(0,n);heap.push(o);if(o.kind==='str')strs.set(o.s,o);return o},
+ mkStr=(t,c)=>H?(strs.get(t)||reg({kind:'str',s:t},c)):t;
+ try{for(;;){const F=fr[fr.length-1],K=F.f.K,ip=F.ip,c=F.f.code[ip],o=c.op;cF=F;cIp=ip;if(++n>6000){const x=RE(c,'Stopped after 6000 steps. A loop may never end, or the program is very long.');x.lim=1;throw x}
+  let say='',nx=ip+1,a,b,v;
+  switch(o){
+   case'CONSTANT':v=K[c.arg];st.push(v);say=`Put ${sh(v)} on the pile.`;break;
+   case'NIL':st.push(null);say='Put "nothing" (nil) on the pile.';break;
+   case'TRUE':st.push(true);say='Put true on the pile.';break;
+   case'FALSE':st.push(false);say='Put false on the pile.';break;
+   case'POP':v=st.pop();say=`Throw away ${sh(v)} from the top of the pile.`;break;
+   case'GET_LOCAL':v=st[F.base+c.arg];st.push(v);say=`Copy ${c.nm} (${sh(v)}) from the desk onto the pile.`;break;
+   case'SET_LOCAL':v=st[st.length-1];st[F.base+c.arg]=v;say=`Save ${sh(v)} into ${c.nm} on the desk.`;break;
+   case'GET_GLOBAL':if(!(c.nm in G))throw RE(c,`There is no variable called "${c.nm}" yet.`);v=G[c.nm];st.push(v);say=`Fetch ${c.nm} (${sh(v)}) from the shelf.`;break;
+   case'SET_GLOBAL':if(!(c.nm in G))throw RE(c,`There is no variable called "${c.nm}" yet.`);v=st[st.length-1];G[c.nm]=v;say=`Save ${sh(v)} into ${c.nm} on the shelf.`;break;
+   case'DEFINE_GLOBAL':v=st.pop();G[c.nm]=v;say=`Put ${sh(v)} on the shelf under the name ${c.nm}.`;break;
+   case'ADD':{const bb=st[st.length-1],aa=st[st.length-2];
+    if(isS(aa)&&isS(bb))v=mkStr(sv(aa)+sv(bb),c);else if(typeof aa==='number'&&typeof bb==='number')v=aa+bb;else throw RE(c,'You can add two numbers or two texts. Not a number and a text.');
+    st.pop();st.pop();st.push(v);a=aa;b=bb;say=`${sh(a)} + ${sh(b)} makes ${sh(v)}.`;break}
+   case'SUBTRACT':case'MULTIPLY':case'DIVIDE':case'GREATER':case'LESS':b=st.pop();a=st.pop();num(c,a,b);v=o==='SUBTRACT'?a-b:o==='MULTIPLY'?a*b:o==='DIVIDE'?a/b:o==='GREATER'?a>b:a<b;st.push(v);say=`${sh(a)} ${({SUBTRACT:'-',MULTIPLY:'x',DIVIDE:'/',GREATER:'>',LESS:'<'})[o]} ${sh(b)} gives ${sh(v)}.`;break;
+   case'EQUAL':b=st.pop();a=st.pop();v=isS(a)&&isS(b)?sv(a)===sv(b):a===b;st.push(v);say=`Is ${sh(a)} equal to ${sh(b)}? ${v}.`;break;
+   case'NOT':v=tf(st.pop());st.push(v);say=`Flip it: now ${v}.`;break;
+   case'NEGATE':v=st.pop();num(c,v,0);st.push(-v);say=`Flip the sign: ${-v}.`;break;
+   case'PRINT':v=st.pop();out.push(fv(v));say=`Show ${fv(v)} on the screen.`;break;
+   case'JUMP_IF_FALSE':v=st[st.length-1];if(tf(v)){nx=c.arg;say='False, so skip over the next part.'}else say='True, so carry on.';break;
+   case'JUMP':nx=c.arg;say='Skip over the other branch.';break;
+   case'LOOP':nx=c.arg;say='Go back up and check again.';break;
+   case'CLOSURE':{const pr=K[c.arg],cl={kind:'closure',name:pr.name,arity:pr.arity,pn:pr.pn,code:pr.code,K:pr.K,uv:[]};reg(cl,c);(pr.ups||[]).forEach(u=>cl.uv.push(u.l?cap(F.base+u.i,u.n):F.f.uv[u.i]));cls.push(cl);st.push(cl);
+    say=`Create the function ${cl.name}${cl.uv.length?' and give it a bag for '+cl.uv.map(u=>u.n).join(', '):''}.`;break}
+   case'GET_UPVALUE':{const u=F.f.uv[c.arg];v=u.open?st[u.slot]:u.val;st.push(v);say=`Read ${c.nm} from the bag: ${sh(v)}.`;break}
+   case'SET_UPVALUE':{const u=F.f.uv[c.arg];v=st[st.length-1];if(u.open)st[u.slot]=v;else u.val=v;say=`Save ${sh(v)} into ${c.nm} in the bag.`;break}
+   case'CLOSE_UPVALUE':closeFrom(st.length-1);st.pop();say=`${c.nm} is about to leave the desk, so it moves into the bag first.`;break;
+   case'CLASS':{const kl={kind:'class',id:++oid,name:c.nm,methods:{},sup:null};objs.push(kl);reg(kl,c);st.push(kl);say=`Create the class ${c.nm}. It is a blueprint for objects.`;break}
+   case'METHOD':{const m=st.pop(),kl=st[st.length-1];kl.methods[c.nm]=m;say=`Add the method ${c.nm} to the class ${kl.name}.`;break}
+   case'INHERIT':{const sp=st[st.length-2],sb=st[st.length-1];if(!sp||sp.kind!=='class')throw RE(c,'A class can only inherit from a class.');Object.assign(sb.methods,sp.methods);sb.sup=sp;st.pop();say=`Copy the methods of ${sp.name} into ${sb.name}.`;break}
+   case'GET_PROPERTY':{const ob=st[st.length-1];if(!ob||ob.kind!=='inst')throw RE(c,'Only objects have fields and methods.');
+    if(c.nm in ob.fields){v=ob.fields[c.nm];st.pop();st.push(v);say=`Read the field ${c.nm} of the object: ${sh(v)}.`}else{v=bind(ob.cls,c.nm,c,`This object has no field or method called "${c.nm}".`);st.pop();st.push(v);say=`Find the method ${c.nm} and attach it to the object.`}break}
+   case'SET_PROPERTY':{v=st.pop();const ob=st[st.length-1];if(!ob||ob.kind!=='inst')throw RE(c,'Only objects have fields.');ob.fields[c.nm]=v;st.pop();st.push(v);say=`Store ${sh(v)} in the field ${c.nm} of the object.`;break}
+   case'INVOKE':{const k=c.argc,rc=st[st.length-1-k];if(!rc||rc.kind!=='inst')throw RE(c,'Only objects have methods.');
+    if(c.nm in rc.fields){const f3=rc.fields[c.nm];st[st.length-1-k]=f3;callValue(f3,k,c,F,ip)}else{const m=rc.cls.methods[c.nm];if(!m)throw RE(c,`This object has no method called "${c.nm}".`);openFrame(m,k,c,F,ip)}
+    say=`Call the method ${c.nm} on the object. A fresh window opens.`;snap(F,ip,c,say,false);continue}
+   case'SUPER_INVOKE':{const k=c.argc,sp=st.pop(),m=sp.methods[c.nm];if(!m)throw RE(c,`The superclass has no method called "${c.nm}".`);openFrame(m,k,c,F,ip);say=`Call ${c.nm} from the superclass ${sp.name}. A fresh window opens.`;snap(F,ip,c,say,false);continue}
+   case'GET_SUPER':{const sp=st.pop();v=bind(sp,c.nm,c,`The superclass has no method called "${c.nm}".`);st.pop();st.push(v);say=`Get the method ${c.nm} from the superclass ${sp.name}.`;break}
+   case'CALL':{const k=c.arg,f2=st[st.length-1-k],nm0=f2&&f2.kind==='class'?f2.name:null;
+    if(callValue(f2,k,c,F,ip)){const fn=fr[fr.length-1].f;say=nm0?`Create a new ${nm0} object and run its init method. A fresh window opens.`:`Call ${fn.name}. A fresh window opens${fn.pn.length?' with its own '+fn.pn.join(', '):''}.`;snap(F,ip,c,say,false);continue}
+    say=`Create a new ${nm0} object.`;break}
+   case'RETURN':v=st.pop();if(fr.length===1){snap(F,ip,c,'The program is finished.');return{log,out,err:null,G,gcs}}
+    const mv=open.filter(u=>u.slot>=F.base).map(u=>u.n);closeFrom(F.base);st.length=F.base;st.push(v);fr.pop();say=`${F.f.name} is done and hands back ${sh(v)}. Its window closes.${mv.length?' '+mv.join(', ')+' moved into the bag.':''}`;break}
+  snap(F,ip,c,say,nx!==ip+1);F.ip=nx}}
+ catch(e){return{log,out,err:e.lim?e.message:`Line ${e.line}: ${e.message}`,lim:!!e.lim,gcs}}}
+
+// ENGINE. Optimizer: rewrites bytecode (4 tricks). Must never change a program's output. Pure JS, no DOM.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+function optimize(P){const notes=[],rep={fold:0,known:0,dead:0,copy:0},OPS={ADD:'+',SUBTRACT:'-',MULTIPLY:'x',DIVIDE:'/'},CMP={LESS:'<',GREATER:'>',EQUAL:'=='},defs={},sets={};
+ const scanAll=f=>{f.code.forEach(c=>{if(c.op==='DEFINE_GLOBAL')defs[c.nm]=(defs[c.nm]||0)+1;if(c.op==='SET_GLOBAL')sets[c.nm]=1});f.K.forEach(k=>k&&k.code&&scanAll(k))};scanAll(P.f);
+ const EF={CONSTANT:1,NIL:1,TRUE:1,FALSE:1,GET_LOCAL:1,GET_GLOBAL:1,GET_UPVALUE:1,CLOSURE:1,POP:-1,CLOSE_UPVALUE:-1,DEFINE_GLOBAL:-1,ADD:-1,SUBTRACT:-1,MULTIPLY:-1,DIVIDE:-1,EQUAL:-1,GREATER:-1,LESS:-1,PRINT:-1};
+ const cl=(f,main)=>{const K=f.K.map(k=>k&&k.code?cl(k,false):k),code=f.code.map(c=>({...c}));
+  const cut=(i,n,ins)=>{const d=n-ins.length;code.splice(i,n,...ins);code.forEach(c=>{if(/JUMP|LOOP/.test(c.op)&&c.arg>i+n-1)c.arg-=d})};
+  for(let ch=1;ch;){ch=0;const tg=new Set(),KN={};code.forEach(c=>{if(/JUMP|LOOP/.test(c.op))tg.add(c.arg)});
+   const free=(i,n)=>{for(let j=i+1;j<i+n;j++)if(tg.has(j))return false;return true};
+   if(main)code.forEach((c,d)=>{if(c.op==='DEFINE_GLOBAL'&&d>0&&code[d-1].op==='CONSTANT'&&defs[c.nm]===1&&!sets[c.nm])KN[c.nm]={at:d,k:code[d-1].arg}});
+   for(let i=0;i<code.length&&!ch;i++){const a=code[i],b=code[i+1],o=code[i+2],x=a.op==='CONSTANT'?K[a.arg]:undefined,y=b&&b.op==='CONSTANT'?K[b.arg]:undefined;
+    if(a.op==='GET_GLOBAL'&&KN[a.nm]&&i>KN[a.nm].at){code[i]={...a,op:'CONSTANT',arg:KN[a.nm].k};rep.known++;notes.push(`${a.nm} never changes, so its value ${K[KN[a.nm].k]} was used directly (line ${a.line})`);ch=1}
+    else if(x!==undefined&&y!==undefined&&o&&free(i,3)){let r,s;
+     if(typeof x==='number'&&typeof y==='number'){if(OPS[o.op]&&!(o.op==='DIVIDE'&&y===0)){r=o.op==='ADD'?x+y:o.op==='SUBTRACT'?x-y:o.op==='MULTIPLY'?x*y:x/y;s=`${x} ${OPS[o.op]} ${y} became ${r}`}else if(CMP[o.op]){r=o.op==='LESS'?x<y:o.op==='GREATER'?x>y:x===y;s=`${x} ${CMP[o.op]} ${y} became ${r}`}}
+     else if(typeof x==='string'&&typeof y==='string'&&o.op==='ADD'){r=x+y;s='two pieces of text were joined ahead of time'}
+     if(s){rep.fold++;notes.push(`${s} (line ${o.line})`);cut(i,3,[typeof r==='boolean'?{...o,op:r?'TRUE':'FALSE',arg:undefined}:{...a,arg:K.push(r)-1}]);ch=1}}
+    else if(typeof x==='number'&&b&&b.op==='NEGATE'&&free(i,2)){rep.fold++;notes.push(`-${x} was worked out ahead of time (line ${b.line})`);cut(i,2,[{...a,arg:K.push(-x)-1}]);ch=1}
+    else if((a.op==='TRUE'||a.op==='FALSE')&&b&&b.op==='NOT'&&free(i,2)){rep.fold++;notes.push(`not ${a.op.toLowerCase()} was worked out ahead of time (line ${b.line})`);cut(i,2,[{...a,op:a.op==='TRUE'?'FALSE':'TRUE'}]);ch=1}
+    else if(/^(CONSTANT|NIL|TRUE|FALSE|GET_LOCAL)$/.test(a.op)&&b&&b.op==='POP'&&free(i,2)){rep.dead++;notes.push(`a value was loaded and immediately thrown away, so both steps were removed (line ${a.line})`);cut(i,2,[]);ch=1}}
+   if(!ch&&!main&&!code.some(c=>/JUMP|LOOP|^(CLASS|METHOD|INHERIT|GET_PROPERTY|SET_PROPERTY|INVOKE|SUPER_INVOKE|GET_SUPER)$/.test(c.op))){let h=1+f.arity;for(let i=0;i<code.length-1;i++){const c=code[i];
+    if(c.op==='GET_LOCAL'&&code[i+1].op==='RETURN'&&h===c.arg+1){rep.copy++;notes.push(`${c.nm} was already on top of the pile, so copying it before returning was skipped (line ${c.line})`);cut(i,1,[]);ch=1;break}
+    h+=EF[c.op]!==undefined?EF[c.op]:c.op==='CALL'?-c.arg:0}}}
+  return{...f,code,K}};
+ return{f:cl(P.f,true),T:P.T,notes,rep}}
+
+// CONTENT. The lessons: question, starter code, intro text, task, check, aha line. Add a lesson here.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const CH=[
+{n:'Adding numbers',q:'What does the computer do with 1 + 2?',p:'print 1 + 2;',v:'pile',lead:'The computer turns your line into small steps. It keeps values on a pile (called the stack). Press Run and watch.',task:'Change the code so it prints 14.',ok:r=>!r.err&&r.out.join()==='14',aha:'Every program is small steps like these: put values on the pile, work on them, show the answer.'},
+{n:'Variables',q:'Where is a variable kept?',p:'var a = 10;\n{\n  var b = a * 2;\n  print b - 5;\n}\nprint a;',v:'mem',lead:'A variable is a box with a name. Boxes made inside { } are thrown away at the closing }.',task:'Add the line  print b;  at the end and run it. What do you see?',ok:r=>/"b"/.test(r.err||''),aha:'b was only inside the { }. After the }, it is gone. This is called scope.'},
+{n:'Loops',q:'How does a program repeat?',p:'var sum = 0;\nfor (var i = 1; i <= 3; i = i + 1) {\n  sum = sum + i;\n}\nprint sum;',v:'flow',lead:'The computer reads line by line. A loop sends it back up to repeat some lines.',task:'Make it add the numbers 1 to 10. The answer is 55.',ok:r=>!r.err&&r.out.join()==='55',aha:'A loop just says "go back up". It stops when the condition becomes false.'},
+{n:'Functions',q:'What happens when a function calls itself?',p:'fun fact(n) {\n  if (n <= 1) return 1;\n  return n * fact(n - 1);\n}\nprint fact(4);',v:'tower',lead:'Each call gets its own window with its own values. A function that calls itself opens window after window.',task:'Make it print the factorial of 5. The answer is 120.',ok:r=>!r.err&&r.out.join()==='120',aha:'Each call has its own n. The windows wait for each other. Then the answers come back one by one. This is the call stack.'},
+{n:'Closures',q:'How can a function remember a value?',p:'fun makeCounter() {\n  var i = 0;\n  fun count() {\n    i = i + 1;\n    return i;\n  }\n  return count;\n}\nvar c = makeCounter();\nprint c();\nprint c();',v:'clos',lead:'A function inside another function can carry a bag of values from outside. The bag goes wherever the function goes.',task:'Add  var d = makeCounter();  and  print d();  at the end. Does d start at 1, or go on from 3?',ok:r=>!r.err&&r.out.join()==='1,2,1',aha:'Each makeCounter() call makes a new bag. So c and d count separately.'},
+{n:'Classes',q:'How does an object get its methods?',p:'class Animal {\n  init(name) {\n    this.name = name;\n  }\n  speak() {\n    print this.name + " makes a sound";\n  }\n}\nvar a = Animal("Rex");\nvar b = Animal("Tom");\na.speak();\nb.speak();',v:'cls',lead:'A class is a blueprint. Each object made from it has its own values (called fields). All objects share the same methods.',task:'Add the line a.name = "Max"; before a.speak(); and run it. Which animal changed its name?',ok:r=>!r.err&&r.out.includes('Max makes a sound')&&r.out.includes('Tom makes a sound'),aha:'The class is made once. Each Animal(...) call makes a new object with its own fields. Changing a field of one object does not change the others.'},{n:'Memory',q:'Where do objects live while the program runs?',p:'var s = "";\nfor (var i = 0; i < 5; i = i + 1) {\n  s = s + "a";\n}\nprint s;',v:'heap',heap:{cells:32,gc:false},lead:'Numbers sit on the stack. Text and objects live in the heap. Each new string takes space there.',task:'Change 5 to 20 and run it. Watch the unused strings pile up. What happens when the heap is full?',ok:r=>/Out of memory/.test(r.err||''),aha:'Each s = s + "a" makes a new string and leaves the old one behind. Nothing frees the old ones, so unused strings pile up until the heap is full.'},
+{n:'Mistakes',q:'What happens when there is a mistake?',p:'var x = 1;\nprint x + "a";',v:'err',lead:'Some mistakes are found before the program starts. Others are found only while it runs. Try both: delete the ; to see the first kind.',task:'Fix the code so it prints 2.',ok:r=>!r.err&&r.out.join()==='2',aha:'A missing ; is found before running. Adding a number and a text is found only while running.'},
+{n:'Garbage collection',q:'How does the computer free memory nobody needs?',p:'var keep = "";\nvar s = "";\nfor (var i = 0; i < 20; i = i + 1) {\n  s = s + "a";\n  if (i == 2) {\n    keep = s;\n  }\n}\nprint s;\nprint keep;',v:'heap',heap:{cells:32,gc:true},lead:'This is lesson 7 with one change: the program keeps one old string in a variable called keep. A garbage collector now runs when the heap is full. It frees objects the program can no longer reach.',task:'Change i == 2 to i == 10 and run it. Which string does the collector keep now? Check the Held by lines.',ok:r=>!r.err&&r.gcs>0&&r.out[0]==='a'.repeat(20)&&r.out[1]==='a'.repeat(11),aha:'The collector does not care how old an object is. It keeps every object a variable can still reach, such as keep, and frees the rest.'},
+{n:'Optimization',q:'Can the same work be done in fewer steps?',p:'var total = 0;\nfor (var i = 0; i < 60; i = i + 1) {\n  total = total + 2 * 3 * 4 + 5 * 6;\n}\nprint total;',v:'opt',lead:'This loop calculates 2 * 3 * 4 + 5 * 6 sixty times. The answer never changes. An optimizer calculates it once, before the program runs.',task:'Turn the optimizer on. Watch the steps go down.',ok:()=>!!(opt&&OP&&OP.r1.log.length<OP.r0.log.length&&OP.r1.out.join()===OP.r0.out.join()),aha:'Same answer, less work. Real compilers do this and much more.'},
+{n:'Practice',pg:1,q:'Write your own program',p:'print "hello";',v:'flow',lead:'Write any program, or pick a sample below. Run it, change it, run it again.',task:'Pick a sample. Change one number. Guess the output, then press Run.',ok:()=>false,aha:''}];
+
+// CONTENT. Plain-English one-liners for every instruction (shown in the lists).
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const DS={CONSTANT:(c,K)=>`Put ${S2(K[c.arg])} on the pile`,NIL:()=>'Put nil on the pile',TRUE:()=>'Put true on the pile',FALSE:()=>'Put false on the pile',POP:()=>'Throw away the top value',GET_LOCAL:c=>`Copy ${c.nm} from the desk`,SET_LOCAL:c=>`Save the top value in ${c.nm}`,GET_GLOBAL:c=>`Fetch ${c.nm} from the shelf`,SET_GLOBAL:c=>`Save the top value in ${c.nm}`,DEFINE_GLOBAL:c=>`Put the top value on the shelf as ${c.nm}`,ADD:()=>'Add the top two',SUBTRACT:()=>'Subtract the top two',MULTIPLY:()=>'Multiply the top two',DIVIDE:()=>'Divide the top two',EQUAL:()=>'Are the top two equal?',GREATER:()=>'Is the lower one bigger?',LESS:()=>'Is the lower one smaller?',NOT:()=>'Flip true and false',NEGATE:()=>'Flip the sign',PRINT:()=>'Show the top value on the screen',JUMP_IF_FALSE:c=>`If false, go to step ${c.arg+1}`,JUMP:c=>`Go to step ${c.arg+1}`,LOOP:c=>`Go back to step ${c.arg+1}`,RETURN:()=>'Finish this function',CLOSURE:c=>`Create the function ${c.nm}`,CALL:c=>`Call it, passing in ${c.arg} value${c.arg===1?'':'s'}`,CLASS:c=>`Create the class ${c.nm}`,METHOD:c=>`Add the method ${c.nm} to the class`,INHERIT:()=>'Copy the superclass methods into the class',GET_PROPERTY:c=>`Read ${c.nm} from the object`,SET_PROPERTY:c=>`Save the top value in ${c.nm} of the object`,INVOKE:c=>`Call the method ${c.nm}`,SUPER_INVOKE:c=>`Call ${c.nm} from the superclass`,GET_SUPER:c=>`Get ${c.nm} from the superclass`,GET_UPVALUE:c=>`Read ${c.nm} from the bag`,SET_UPVALUE:c=>`Save the top value in ${c.nm} in the bag`,CLOSE_UPVALUE:c=>`Move ${c.nm} into the bag, then clear the desk`};
+
+// CONTENT. Words with a dotted underline: name -> meaning.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const TERMS={"heap": "The part of memory where objects live while the program runs.", "garbage collector": "The part of the machine that frees memory nobody can reach any more.", "garbage collection": "Automatic clean-up of memory that nobody can reach any more.", "garbage": "An object the program can no longer reach.", "reachable": "Can be found by starting at the stack or a global variable and following references.", "class": "A blueprint for objects. It lists the methods that objects of this kind have.", "object": "A thing made from a class. It has its own fields.", "field": "A named value stored inside an object, like name.", "method": "A function that belongs to a class.", "inheritance": "A class can reuse the methods of another class, called its superclass.", "superclass": "The class that another class inherits from.", "stack": "A pile of values where you only touch the top. The last value put on is the first one taken off (LIFO: last in, first out).", "nil": "Means \"no value\". Lox uses nil when there is nothing to give back.", "constant": "A fixed value written in your code, like 1 or \"hello\".", "instruction": "One tiny command for the machine, like CONSTANT or ADD. A program is a list of them.", "bytecode": "The list of instructions the compiler makes. A virtual machine runs it.", "token": "One small piece of code: a word, a number or a symbol.", "compiler": "The part that turns your code into instructions. It does this before anything runs.", "virtual machine": "A program that acts like a simple computer. It runs the instructions one by one.", "global": "A variable kept in a table by name. It lasts for the whole program.", "local": "A variable inside a block or a function. It lives on the stack.", "scope": "The part of the code where a name can be used.", "call stack": "The list of open function calls. Each call has its own window.", "closure": "A function together with the outside values it uses.", "upvalue": "An outside variable that an inner function uses.", "optimizer": "A helper that changes instructions so the same answer needs less work.", "operand": "A value an operator works on. In 1 + 2, the operands are 1 and 2.", "operator": "A symbol that does something with values, like + or *.", "expression": "Code that produces a value, like 1 + 2.", "reference": "A way to find an object. A variable holds a reference, not the object itself.", "sweep": "The second step of clean-up. It frees every object that was not marked.", "interning": "Storing equal text only once. The machine reuses the same string instead of making a copy.", "allocation": "Reserving space in the heap for a new object.", "instance": "Another word for an object made from a class. Lox prints it like this: Animal instance.", "cell": "One small slot of the heap. A short string takes 1 cell.", "pile": "A pile of values where you only touch the top. The last value put on is the first one taken off (LIFO: last in, first out)."};
+
+// CONTENT. The "why" line shown under the picture for every instruction.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const WHY={"CLASS": "Creates a new, empty class (a blueprint for objects) and puts it on the stack.", "METHOD": "Takes the function on top of the stack and adds it to the class below it, under the method name.", "INHERIT": "Copies all the methods of the superclass into the subclass. This is why the subclass can use them.", "GET_PROPERTY": "Reads a field of the object on top of the stack. If there is no such field, it looks for a method with that name.", "SET_PROPERTY": "Stores the top value in a field of the object below it. The value stays on the stack.", "INVOKE": "Calls a method by name in one step: it finds the method on the object and calls it.", "SUPER_INVOKE": "Calls a method of the superclass on this object.", "GET_SUPER": "Finds a method in the superclass and attaches it to this object.", "CONSTANT": "CONSTANT copies a fixed value from your code onto the stack. It waits there until an instruction needs it.", "NIL": "nil means \"no value\". The compiler adds NIL and RETURN at the end of every program or function, because it must give something back when it finishes.", "TRUE": "Puts the value true on the stack.", "FALSE": "Puts the value false on the stack.", "POP": "POP removes the top value of the stack. It cleans up a value that nobody needs any more.", "GET_LOCAL": "Copies a local variable from its place on the stack to the top. The compiler already knows the place, so no name lookup is needed.", "SET_LOCAL": "Writes the top value into a local variable. The value stays on the stack, because an assignment is also an expression.", "GET_GLOBAL": "Looks up a global variable by its name in a table and puts the value on the stack.", "SET_GLOBAL": "Changes a global variable that already exists. It is an error if the name was never defined.", "DEFINE_GLOBAL": "Takes the top value off the stack and stores it in the table of globals under the variable name.", "ADD": "ADD removes the top two values from the stack, adds them, and puts the result on top. Both values must already be on the stack, so the compiler emitted them first.", "SUBTRACT": "Removes the top two values and puts back the first minus the second. Order matters: the value pushed first is on the left.", "MULTIPLY": "Removes the top two values and puts back their product.", "DIVIDE": "Removes the top two values and puts back the first divided by the second.", "EQUAL": "Removes the top two values and puts back true if they are equal, otherwise false.", "GREATER": "Removes the top two values and puts back true if the first is bigger than the second.", "LESS": "Removes the top two values and puts back true if the first is smaller than the second.", "NOT": "Turns true into false and false into true. In Lox only false and nil count as false.", "NEGATE": "Changes the sign of the top value: 5 becomes -5.", "PRINT": "Removes the top value of the stack and shows it on the screen.", "JUMP_IF_FALSE": "Looks at the top value without removing it. If it is false, the program jumps ahead and skips the next part.", "JUMP": "Jumps ahead to another instruction and skips the code in between.", "LOOP": "Jumps backward to an earlier instruction. This is how a loop repeats.", "CLOSURE": "Creates a function value. If the function uses outside variables, they are put into its bag.", "CALL": "Calls the function that sits below its arguments on the stack. A new window opens for the call.", "RETURN": "Ends the current function or program. The result goes back to the caller and the window closes.", "GET_UPVALUE": "Reads an outside variable from the bag of the current function.", "SET_UPVALUE": "Changes an outside variable in the bag of the current function.", "CLOSE_UPVALUE": "The variable is about to leave the stack. Its value is moved into the bag first, so it stays alive."};
+const GCWHY={start:'The collector pauses the program. It starts from the roots: the stack and the global variables.',mark:'Marking follows every reference from the roots. Everything it reaches is still in use, so it stays.',sweep:'Sweeping frees every object that was not marked. Nobody can reach it, so nobody needs it.'};
+
+// CONTENT. The "Read more: How it works" article for each lesson.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const ART={"0": {"before": [["Expression", "Code that produces a value, like 1 + 2."], ["Operator and operand", "In 1 + 2, the + is the operator. The 1 and the 2 are its operands."], ["Stack", "A pile of values where you only touch the top (last in, first out)."], ["Instruction", "One tiny command for the machine, like CONSTANT or ADD."], ["nil", "Means \"no value\"."]], "how": ["The compiler turns your text into a list of instructions (bytecode).", "A virtual machine runs the instructions one at a time.", "CONSTANT copies a fixed value from your code onto the stack.", "ADD removes the top two values, adds them and puts the result back.", "PRINT removes the top value and shows it.", "At the end the compiler adds NIL and RETURN. A program must give something back when it finishes, and nil means nothing."], "comp": ["Scanning: the text is cut into tokens: print, 1, +, 2 and ;", "Parsing: the compiler reads 1, then sees +, then reads 2. It knows + needs a value on each side.", "Emitting: it writes CONSTANT for 1, CONSTANT for 2, then ADD. The values come first because the machine can only add what is already on the stack. This order is called postfix.", "Precedence: in 1 + 2 * 3 the compiler emits MULTIPLY before ADD, so the multiplication runs first."], "key": ["The stack holds values while they wait.", "Operators work on the top values of the stack.", "The compiler decides the order of the instructions. The virtual machine only follows it."]}, "1": {"before": [["Variable", "A name that points to a value."], ["Global", "Declared outside any block. Kept in a table by name for the whole program."], ["Local", "Declared inside { }. Kept on the stack and removed at the closing }."], ["Scope", "The part of the code where a name can be used."]], "how": ["var at the top level makes a global. DEFINE_GLOBAL stores the value in a table under its name.", "Reading it later uses GET_GLOBAL with the name.", "var inside { } makes a local. Its value just stays on the stack. The compiler remembers which place on the stack it has.", "Reading a local uses GET_LOCAL with that place. The name is not needed while the program runs.", "At the closing }, POP removes the locals from the stack."], "comp": ["While it reads a block, the compiler keeps a list of the local names. The position in this list is the place on the stack.", "If a name is not in that list, it must be a global, so the compiler emits GET_GLOBAL.", "This is why b cannot be found after the }: the compiler already removed it from its list."], "key": ["Globals are found by name. Locals are found by place on the stack.", "Scope is decided by the compiler, before the program runs.", "Locals are faster, because no name lookup is needed."]}, "2": {"before": [["Condition", "An expression that is true or false."], ["Jump", "An instruction that moves to another instruction, instead of the next one."], ["Branch", "A place where the program can go two ways, like if and else."]], "how": ["JUMP_IF_FALSE looks at the top value. If it is false, it jumps ahead.", "JUMP always jumps ahead. After the if part runs, it skips the else part.", "LOOP jumps backward. This is how a loop repeats.", "A for loop works like a while loop, with a start and a step added by the compiler.", "Every jump has a target: the number of the instruction to go to."], "comp": ["When the compiler reads an if, it does not know where to jump yet. The code after it is not compiled yet.", "So it writes the jump with an empty target, compiles the body, then goes back and fills the target in. This is called backpatching.", "A loop jump goes backward, so its target is already known: the start of the condition."], "key": ["if, while and for all become jumps.", "Forward jumps skip code. Backward jumps repeat code.", "The compiler fills in the jump targets after it has compiled the body."]}, "3": {"before": [["Function", "A named block of code that you can run again and again."], ["Call", "Running a function. You pass it arguments."], ["Parameter and argument", "In fact(n), n is the parameter. The value you pass in is the argument."], ["Call stack", "The list of open function calls. Each call has its own window."]], "how": ["The body of the function is compiled once, into its own list of instructions.", "CALL opens a new window on the stack. The arguments become the local variables of that window.", "RETURN closes the window, removes its values and leaves the result on the stack.", "A function that calls itself (recursion) opens one window per call. Each window has its own copy of n.", "Only a limited number of windows can be open. If there are too many, you get a stack overflow."], "comp": ["The compiler compiles the function body separately, with its own list of locals. The parameters are the first locals.", "A call is compiled as: the function, then the arguments, then CALL with the number of arguments.", "The function name is stored in a global, so a call finds it with GET_GLOBAL."], "key": ["Every call has its own window and its own values.", "Recursion needs a base case. Without one the windows never stop.", "The call stack is a stack of windows."]}, "4": {"before": [["Closure", "A function together with the outside variables it uses."], ["Upvalue", "A variable from an outer function that an inner function uses."], ["Open and closed", "Open: the variable is still on the stack. Closed: its value was moved into the bag."]], "how": ["count uses i, which belongs to makeCounter. The compiler marks i as captured.", "When makeCounter creates count, CLOSURE gives count a bag that holds i.", "While makeCounter runs, the bag points to i on the stack. It is open.", "When makeCounter returns, its window disappears. Before that, the value of i is moved into the bag. It is closed now.", "Each call to count reads and changes i in the bag with GET_UPVALUE and SET_UPVALUE."], "comp": ["While compiling count, the compiler looks for i. It is not a local of count, so it searches the outer function.", "When it finds i there, it adds i to the upvalue list of count.", "At the end it emits CLOSURE with that list, so the machine knows what to put in the bag."], "key": ["A closure keeps variables alive after their function has ended.", "The value moves off the stack just before the window closes.", "Each call to makeCounter makes a new bag."]}, "5": {"before": [["Class", "A blueprint. It lists the methods that objects of this kind have."], ["Object", "A thing made from a class. It has its own fields."], ["Instance", "Another word for an object made from a class. Lox prints it like this: Animal instance."], ["Field", "A named value stored inside an object, like name."], ["Method", "A function that belongs to a class."], ["this", "Inside a method, the object the method was called on."]], "how": ["CLASS creates an empty class and stores it under its name, Animal.", "METHOD adds one function to the class for each method, here init and speak. Each one is stored once, in the class.", "Animal(\"Rex\") calls the class. The machine makes a new object and runs init on it.", "this.name = name stores a value in a field of that object (SET_PROPERTY).", "Animal(\"Tom\") makes a second object. It has its own name field and uses the same methods.", "a.speak() finds speak through the class and calls it. The object a becomes this inside the method.", "Inheritance: class Dog < Animal copies the methods of Animal into Dog (INHERIT). super.speak() calls the version from Animal."], "comp": ["Inside a method, the first place in the window holds this. The compiler gives that place the name this.", "When the compiler reads this, it treats it like a local variable.", "Animal(\"Rex\") is compiled as a normal CALL. The machine sees that the value is a class, so it makes an object.", "A call like a.speak() is compiled as INVOKE. It finds and calls the method in one step.", "For a subclass the compiler makes a hidden variable called super, so super.speak() knows where to look."], "key": ["A class is made once. Objects are made many times.", "Fields belong to each object. Methods are shared through the class.", "Changing a field of one object never changes another object.", "this is just the first local variable of a method."]}, "6": {"before": [["Heap", "The part of memory where objects live while the program runs."], ["Object", "Something stored in the heap, like a string, a function or an instance of a class."], ["Reference", "A way to find an object. A variable holds a reference, not the object itself."], ["Stack and heap", "Small values like numbers sit on the stack. Bigger things like text sit in the heap."], ["Cell", "One small slot of the heap. A short string takes 1 cell."]], "how": ["A number is small and always the same size. It fits directly on the stack.", "Text can be any length, and it can live longer than the code that made it. So text goes in the heap.", "When the program builds new text, the machine reserves space for it in the heap. This is called allocation.", "The stack or a variable keeps a reference to that space, not the text itself.", "Each new string is a new object. s = s + \"a\" makes a new string and leaves the old one behind.", "Nothing frees the old strings yet. They pile up as unused objects. The picture counts objects made, in use and unused.", "The heap has a limit. When it is full, the program stops with Out of memory."], "comp": ["The compiler does not touch the heap. It only emits instructions such as ADD.", "ADD sees two strings, so it builds a new string in the heap instead of adding numbers.", "The machine looks for an equal string first. Equal text is stored only once. This is called interning.", "A number never takes heap space. A loop that only adds numbers fills no cells.", "Closures, classes and objects are heap objects too.", "The grid is a simplified picture: a string takes one cell, plus one more for every 8 letters."], "key": ["Strings, functions, classes and objects live in the heap. Numbers do not.", "Unused objects pile up if nothing frees them.", "The heap is limited. This site draws it as a small grid so you can watch it fill up."]}, "7": {"before": [["Syntax error", "Code written in a way the language does not allow, like a missing ;."], ["Runtime error", "Code that is written correctly but cannot run, like adding a number to a text."], ["Compile time", "The time when the compiler reads your code, before it runs."]], "how": ["The compiler checks the grammar while it reads. If it finds a mistake, it reports it and nothing runs.", "If the code is fine, the virtual machine runs it. Mistakes that depend on values show up only now.", "x + \"a\" has correct grammar, but ADD cannot add a number and a text.", "The machine stops and reports the error with the line number."], "comp": ["The compiler cannot know what x will hold, because values exist only while the program runs.", "Real compilers such as clox keep checking after an error, so they can report more mistakes. This site shows only the first."], "key": ["Syntax errors are found before running. Runtime errors are found while running.", "After a syntax error nothing runs at all.", "A runtime error needs real values to be found."]}, "8": {"before": [["Garbage", "An object that the program can no longer reach."], ["Root", "A place the collector starts from: the stack and the global variables."], ["Reachable", "Can be found from a root by following references."], ["Mark and sweep", "First mark everything reachable. Then free everything that is not marked."]], "how": ["The heap has a limit. When a new object does not fit, the program pauses.", "The garbage collector starts from the roots: the stack and the global variables. In this program the roots hold s and keep.", "Mark: it follows every reference and marks each object it can reach.", "An object is garbage when nothing can reach it. Age does not matter. The old string held by keep stays.", "Sweep: every object that was not marked is freed. The program continues. The new object now fits.", "If the live objects alone fill the heap, you still get Out of memory."], "comp": ["The compiler and the instructions know nothing about garbage. Only the machine does.", "The collector runs inside an allocation, for example inside ADD when it builds a new string.", "While ADD builds the new string, both old strings stay on the stack. So the collector cannot free them by mistake.", "The Held by line in the picture shows which root leads to each object.", "Real collectors start when the heap passes a size limit. clox starts at about 1 MB. After each collection it sets the next limit to twice the memory still in use.", "This site uses a tiny heap so you can watch the collector work."], "key": ["A collector never asks what is garbage. It finds what is reachable and frees the rest.", "An object is garbage when nothing can reach it, not when it is old.", "The roots are the stack and the global variables.", "Collecting costs time, so real systems do it only when memory is getting full."]}, "9": {"before": [["Optimization", "Changing code so it does the same job with less work."], ["Constant folding", "Calculating an expression early, when all its values are already known."], ["Bytecode", "The list of instructions the compiler makes."]], "how": ["The optimizer reads the instructions after the compiler has made them.", "It looks for patterns it knows. For example CONSTANT, CONSTANT, MULTIPLY can become one CONSTANT with the result.", "The program gives the same answer with fewer steps.", "The optimizer must never change the answer. This site checks that on every run and falls back to the original if it ever differs."], "comp": ["It folds in pieces. 2 * 3 becomes 6. Then 6 * 4 becomes 24. And 5 * 6 becomes 30.", "Jumps need care. When instructions are removed, the jump targets must move too."], "key": ["Optimization changes how the work is done, not the result.", "Real compilers have hundreds of such tricks.", "Each trick is a pattern plus a safe replacement."]}};
+
+// CONTENT. Multi-page lessons. A lesson with an entry here is shown as a short series of pages instead of one long page.
+// Page types: idea (short text + picture from the real engine), play (run the code), quiz (questions with pictures),
+// try (the task), deep (compiler and instructions), recap (key points). Lessons without an entry keep the single-page layout.
+// Add a lesson: add its index here. tests/engine/pages-content.js checks the structure and every answer against the engine.
+const DOG='class Animal {\n  speak() {\n    print "sound";\n  }\n}\nclass Dog < Animal {\n  bark() {\n    print "woof";\n  }\n}\nvar d = Dog();\nd.speak();\nd.bark();';
+const CAT='class Cat {\n  init(n) {\n    this.n = n;\n  }\n  hi() {\n    print "I am " + this.n;\n  }\n}\nvar x = Cat("Mia");\nvar y = Cat("Leo");\ny.hi();';
+const CATS3='class Cat {\n  hi() {\n    print "meow";\n  }\n}\nvar a = Cat();\nvar b = Cat();\nvar c = Cat();';
+const NOFIELD='class Animal {}\nvar a = Animal();\nvar b = Animal();\na.name = "Max";\nprint b.name;';
+const PG={
+ 5:[
+  {id:'idea',nav:'Idea',type:'idea',title:'A class is a blueprint',
+   body:['A program often needs many things of one kind: many animals, many users, many orders.','A class describes the kind once. It lists the values each thing has (fields) and what it can do (methods).','An object is one thing made from the class. Each object has its own fields. All objects share the methods.'],
+   see:{prog:CH[5].p,v:'cls',part:'objs',at:'end',cap:'One class and two objects. The methods are stored once, in the class.'}},
+  {id:'watch',nav:'Watch',type:'play',title:'Watch it run',look:'Press Run and watch for three things. The class is made once. The method init runs for each new object. Each object gets its own name.'},
+  {id:'inherit',nav:'Inherit',type:'idea',title:'A class can build on another class',
+   body:['Sometimes one kind is a special case of another. A dog is an animal that can also bark.','class Dog < Animal says that Dog starts with every method of Animal. Then it adds its own.','So a Dog object can call speak, which Dog never defined itself.'],
+   see:{prog:DOG,v:'cls',part:'objs',at:'end',cap:'Dog inherits from Animal. The object d can call speak and bark.'}},
+  {id:'check',nav:'Check',type:'quiz',title:'Check what you learned',qs:[
+   {id:'l6-predict',q:'What does this program print?',code:CAT,opts:['I am Mia','I am Leo','I am nil','It stops with an error'],a:1,out:['I am Leo'],why:'y.hi() runs hi with this set to y. The object y was made with the name Leo.',see:{prog:CAT,v:'cls',part:'objs',at:'end'}},
+   {id:'l6-store-once',q:'You make 100 Cat objects. How many times is the method hi stored?',opts:['Once, in the class','100 times, once per object','Twice','It is not stored'],a:0,why:'Methods live in the class. An object only points to its class, so 100 objects still use one copy.',see:{prog:CATS3,v:'cls',part:'objs',at:'end'}},
+   {id:'l6-field',q:'What happens when this program runs?',code:NOFIELD,opts:['It prints Max','It prints nil','It stops with an error, because b has no field called name','It prints an empty line'],a:2,err:'has no field or method called "name"',clox:'Undefined property',why:'Fields belong to one object. Setting a.name did not give b a name, so reading b.name is a mistake.',see:{prog:NOFIELD,v:'cls',part:'objs',at:'end'}},
+   {id:'l6-this',q:'Inside a method, what does this mean?',opts:['The object the method was called on','The class the method belongs to','The first value passed to the method','The name of the method'],a:0,why:'a.speak() runs speak with this set to a. b.speak() runs the same code with this set to b.',see:{prog:CH[5].p,v:'cls',part:'objs',at:{inst:2}}}]},
+  {id:'try',nav:'Try',type:'try',title:'Try it yourself'},
+  {id:'deep',nav:'Under the hood',type:'deep',title:'Under the hood',intro:'For the curious. This page shows how the compiler and the machine do it, step by step.'},
+  {id:'recap',nav:'Recap',type:'recap',title:'What you can do now',can:['Explain the difference between a class and an object.','Say what is shared (methods) and what is separate (fields).','Read a call like a.speak() and say what this is.']}
+ ]
+};
+
+// CONTENT. The 11 sample programs in Practice. Every one is checked against real clox.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const RC=[{"t": "Countdown", "g": "Loops", "w": "Counts down from 5 and says liftoff.", "p": "var n = 5;\nwhile (n > 0) {\n  print n;\n  n = n - 1;\n}\nprint \"liftoff\";", "h": "The loop checks n > 0 each time. It prints n, then takes 1 off. When n reaches 0, the loop stops.", "x": "Count down from 10. Then start at 0. Why does only liftoff print?"}, {"t": "Times table", "g": "Loops", "w": "Prints the table of 7, from 1 to 10.", "p": "var i = 1;\nwhile (i <= 10) {\n  print 7 * i;\n  i = i + 1;\n}", "h": "i goes from 1 to 10. Each time, the program prints 7 * i and adds 1 to i.", "x": "Change 7 to your lucky number. Stop at 12."}, {"t": "Star triangle", "g": "Strings", "w": "Prints a triangle made of stars.", "p": "var row = \"\";\nfor (var i = 1; i <= 5; i = i + 1) {\n  row = row + \"*\";\n  print row;\n}", "h": "row is a text. Each time, one * is added to row and row is printed. So each line has one more star.", "x": "Use \"#\" instead of \"*\". Make 8 rows."}, {"t": "Sum to n", "g": "Functions", "w": "Adds the numbers from 1 to n.", "p": "fun sumTo(n) {\n  var total = 0;\n  for (var i = 1; i <= n; i = i + 1) {\n    total = total + i;\n  }\n  return total;\n}\nprint sumTo(10);", "h": "total starts at 0. The loop adds each number into total. return gives total back.", "x": "Try sumTo(100). The answer is 5050."}, {"t": "Even or odd", "g": "Functions", "w": "Checks if a number is even.", "p": "fun mod(a, b) {\n  while (a >= b) a = a - b;\n  return a;\n}\nfun isEven(n) {\n  return mod(n, 2) == 0;\n}\nprint isEven(10);\nprint isEven(7);", "h": "Lox has no % operator, so mod does the job. It takes b away from a again and again. What is left is the remainder. A number is even when the remainder after dividing by 2 is 0.", "x": "Try 0, 1 and 100."}, {"t": "FizzBuzz", "g": "Logic", "w": "Prints Fizz for multiples of 3, Buzz for multiples of 5, and FizzBuzz for both.", "p": "fun mod(a, b) {\n  while (a >= b) a = a - b;\n  return a;\n}\nfor (var i = 1; i <= 15; i = i + 1) {\n  if (mod(i, 15) == 0) print \"FizzBuzz\";\n  else if (mod(i, 3) == 0) print \"Fizz\";\n  else if (mod(i, 5) == 0) print \"Buzz\";\n  else print i;\n}", "h": "Each number goes through questions. The first true one decides what to print. FizzBuzz is asked first, because 15 is a multiple of both.", "x": "Change 3 and 5 to 2 and 7. Count to 30."}, {"t": "Greatest common divisor", "g": "Math", "w": "Finds the biggest number that divides both numbers.", "p": "fun mod(a, b) {\n  while (a >= b) a = a - b;\n  return a;\n}\nfun gcd(a, b) {\n  while (b != 0) {\n    var t = b;\n    b = mod(a, b);\n    a = t;\n  }\n  return a;\n}\nprint gcd(48, 18);", "h": "Replace (a, b) with (b, remainder of a / b) until b is 0. Then a is the answer. t keeps the old b safe.", "x": "Try gcd(17, 5) and gcd(100, 75)."}, {"t": "Fibonacci", "g": "Math", "w": "Prints the first ten Fibonacci numbers.", "p": "var a = 0;\nvar b = 1;\nfor (var i = 0; i < 10; i = i + 1) {\n  print a;\n  var next = a + b;\n  a = b;\n  b = next;\n}", "h": "Each number is the sum of the two before it. a and b hold the last two. Each round prints a and moves both forward.", "x": "Print 15 numbers. Start from 2 and 3."}, {"t": "Powers", "g": "Functions", "w": "Calculates a power by calling itself.", "p": "fun power(base, exp) {\n  if (exp == 0) return 1;\n  return base * power(base, exp - 1);\n}\nprint power(2, 10);", "h": "base to the power exp is base times base to the power exp - 1. When exp is 0, the answer is 1. Step through it and watch the windows.", "x": "Try power(3, 4). What does power(2, 0) give?"}, {"t": "Primes up to 20", "g": "Logic", "w": "Prints every prime number up to 20.", "p": "fun mod(a, b) {\n  while (a >= b) a = a - b;\n  return a;\n}\nfun isPrime(n) {\n  if (n < 2) return false;\n  for (var d = 2; d * d <= n; d = d + 1) {\n    if (mod(n, d) == 0) return false;\n  }\n  return true;\n}\nfor (var n = 2; n <= 20; n = n + 1) {\n  if (isPrime(n)) print n;\n}", "h": "A number is prime if no d from 2 up to its square root divides it. isPrime stops early with return false when it finds one.", "x": "Go up to 25."}, {"t": "Collatz", "g": "Math", "w": "Counts the steps until the number reaches 1.", "p": "fun mod(a, b) {\n  while (a >= b) a = a - b;\n  return a;\n}\nvar n = 6;\nvar steps = 0;\nwhile (n != 1) {\n  if (mod(n, 2) == 0) n = n / 2;\n  else n = 3 * n + 1;\n  steps = steps + 1;\n}\nprint steps;", "h": "If n is even, halve it. If odd, make it 3n + 1. Repeat and count. No one has proved it always reaches 1.", "x": "Try 7 and 9. Big numbers hit the step limit here."}];
+
+// CONTENT. Info pages: Lox features (with Try it code), glossary, make-your-own-language roadmap.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const FEAT=[['Numbers and text','print 1 + 2;\nprint "hello " + "world";'],['Variables','var a = 1;\nvar b = a + 1;\nprint b;'],['Blocks and scope','var a = 1;\n{\n  var a = 2;\n  print a;\n}\nprint a;'],['Decisions','var n = 7;\nif (n > 5) print "big"; else print "small";'],['Loops','for (var i = 1; i <= 3; i = i + 1) print i;'],['and, or','print true and false;\nprint nil or "default";'],['Functions','fun greet(name) {\n  return "Hello, " + name;\n}\nprint greet("Ada");'],['Recursion','fun fact(n) {\n  if (n <= 1) return 1;\n  return n * fact(n - 1);\n}\nprint fact(6);'],['Closures','fun counter() {\n  var n = 0;\n  fun next() {\n    n = n + 1;\n    return n;\n  }\n  return next;\n}\nvar c = counter();\nprint c();\nprint c();'],['Classes','class Dog {\n  bark() {\n    print "Woof";\n  }\n}\nvar d = Dog();\nd.bark();']];
+const GL=[["Token", "One small piece of your code: a word, a number or a symbol."], ["Scanner (lexer)", "Cuts your code into tokens."], ["Compiler", "Turns the tokens into instructions."], ["Bytecode", "The list of small instructions the compiler makes."], ["Virtual machine", "A loop that runs the instructions one by one."], ["Stack (the pile)", "Where values wait. The newest value is on top."], ["Global", "A variable kept for the whole program, found by its name."], ["Local", "A variable inside a block or a function."], ["Scope", "The part of the program where a name can be used."], ["Call stack", "The open function windows. Each one waits for the one above it."], ["Closure", "A function plus the outside values it carries in its bag."], ["Optimizer", "Changes the instructions so the same answer needs less work."], ["Interpreter", "A program that runs another program as it goes."], ["Heap", "The part of memory where objects live while the program runs."], ["Garbage collection", "Automatic clean-up of memory nobody can reach any more."]];
+const ROAD=[['Choose what it is for','A calculator? A game? Rename keywords in Customize to get the feel.','Customize'],['Write a scanner','Cut the text into pieces.','Lesson 1, More details'],['Write a compiler','Turn the pieces into instructions.','Lesson 1'],['Write a virtual machine','A loop that runs the instructions.','Lesson 1'],['Add variables','Globals by name, locals by position.','Lesson 2'],['Add loops and decisions','They are jumps forward and back.','Lesson 3'],['Add functions','Every call opens a window.','Lesson 4'],['Add closures','Values that outlive their function.','Lesson 5'],['Show clear errors','Mistakes found before and during running.','Lesson 8'],['Make it faster','Do work early. Skip useless work.','Lesson 10']];
+
+// CONTENT. The list of badges.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const BD=[['ran','First run','Run any program to the end.'],['solve','First lesson solved','Solve a lesson task.'],['five','Five lessons','Solve five lesson tasks.'],['all','Lesson master','Solve every ready lesson.'],['bug','Bug spotter','Make the computer report a mistake.'],['inf','Endless loop','Write a loop that never ends and see why.'],['speed','Speed demon','Make the optimizer save 20% of the steps.'],['hack','Language hacker','Rename a keyword in Customize.'],['lib','Function writer','Run a program that uses a function you added in Customize.'],['chef','Sample runner','Open a sample program in Practice.'],['safe','Safe keeping','Save your progress to a file.'],['style','Stylist','Try all three color themes.']];
+
+// UI. Tiny helpers: $ (query), esc (escape HTML), S2 (show a value).
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const S2=v=>v===null?'nil':sh(v);
+// For small tiles in the pictures: a long text shows its first letters and its length.
+const SS=v=>{const t=S2(v);return t.length>14&&t[0]==='"'?t.slice(0,7)+'…"\n'+(t.length-2)+' letters':t};
+
+// UI. Shared state (current lesson, program, run log, position...) and saving to the browser.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+let ci=0,P,R,pos=-1,timer,done=new Set,seen=new Set,OP,opt=false,ut='w',codes={},PRE='',SPD=1,lastL=0;
+try{done=new Set(JSON.parse(localStorage.getItem('done')||'[]'))}catch(e){}
+function persist(){try{localStorage.setItem('codes',JSON.stringify(codes));localStorage.setItem('lex',JSON.stringify(LEX));localStorage.setItem('pre',PRE)}catch(e){}}
+
+// UI. Badges, XP and level, toast.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+let earned=new Set();
+try{earned=new Set(JSON.parse(localStorage.getItem('badges')||'[]'))}catch(e){}
+const xp=()=>earned.size*10+done.size*20,lvl=()=>{$('#lvl').textContent=`Level ${Math.floor(xp()/50)+1}`};
+function award(id){if(earned.has(id))return;earned.add(id);try{localStorage.setItem('badges',JSON.stringify([...earned]))}catch(e){}const x=document.createElement('div');x.className='toast';x.textContent='Badge unlocked: '+BD.find(b=>b[0]===id)[1];document.body.append(x);setTimeout(()=>x.remove(),2800);lvl()}
+const libNames=()=>{try{return compile(PRE).f.K.filter(k=>k&&k.code).map(k=>k.name)}catch(e){return[]}};
+
+// UI. Customize page: rename keywords, your own functions (library), their logic.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const KWL=['print','var','fun','return','if','else','while','for','and','or','true','false','nil','class','this','super'],SNIP={add:'fun add(a, b) {\n  return a + b;\n}',max:'fun max(a, b) {\n  if (a > b) return a;\n  return b;\n}',square:'fun square(n) {\n  return n * n;\n}',mod:'fun mod(a, b) {\n  while (a >= b) a = a - b;\n  return a;\n}'};
+const withL=(l,fn)=>{const sv=LEX;LEX=l;mk();try{return fn()}finally{LEX=sv;mk()}};
+function rw(s,from,to){const tk=withL(from,()=>{try{return scan(s)}catch(e){return null}});if(!tk)return s;let o=s;for(let i=tk.length-1;i>=0;i--){const x=tk[i];if(KW.has(x.k))o=o.slice(0,x.a)+(to[x.k]||x.k)+o.slice(x.b)}return o}
+const starter=i=>rw(CH[i].p,{},LEX);
+let LIBG=null;
+const build=src=>compile(src);
+function mkLib(){LIBG=null;if(!PRE.trim())return;try{const pp=compile(PRE),rr=run(pp);if(!rr.err){const z=f=>{f.code.forEach(c=>c.line=0);f.K.forEach(k=>k&&k.code&&z(k))};z(pp.f);LIBG=rr.G}}catch(e){}}
+function setLex(nl){if(Object.keys(nl).length)award('hack');for(const k in codes)codes[k]=rw(codes[k],LEX,nl);PRE=rw(PRE,LEX,nl);LEX=nl;mk();persist()}
+function chk(nl){const u=new Set();for(const[k,v]of Object.entries(nl)){if(!/^[\p{L}_][\p{L}\p{N}\p{M}_]*$/u.test(v))return`"${v}" is not a valid word. Use letters of any language, digits and underscores, and do not start with a digit.`;if(u.has(v))return`"${v}" is used twice.`;u.add(v);if(KW.has(v)&&!nl[v])return`"${v}" is already a word of the language.`}return''}
+function prm(){let m;try{const p=compile(PRE||'');const n=p.f.K.filter(k=>k&&k.code).map(k=>k.name);m=n.length?`You can use: ${n.map(x=>x+'()').join(', ')}`:'No functions yet.'}catch(e){m=`<span class="er">Line ${e.line}: ${esc(e.message)}</span>`}$('#prm').innerHTML=m}
+function workshop(){stop();if($('#src')){codes[ci]=$('#src').value;persist()}$('.wrap').classList.add('ws');
+ $('#main').innerHTML=`<div class="card"><h2>Customize</h2><p class="lead">Change the language to your taste. This works in every lesson.</p></div>
+<div class="card"><h3>Rename words</h3><p class="lead">Give a keyword a new name, like show for print. Your saved code changes to match. Lesson text keeps the old words.</p><div class="kw" id="kw">${KWL.map(k=>`<label>${k}<input data-k="${k}" value="${esc(LEX[k]||'')}" placeholder="${k}" spellcheck="false"></label>`).join('')}</div><div class="ctl"><button class="btn pri" id="kwa">Save names</button><button class="btn" id="kwr">Use original words</button></div><div id="kwm"></div></div>
+<div class="card"><h3>Your own functions</h3><p class="lead">Write a function here once. Use it in every lesson.</p><textarea id="pre" spellcheck="false" aria-label="Your own functions" style="min-height:130px">${esc(PRE)}</textarea><div class="ctl">${Object.keys(SNIP).map(k=>`<button class="btn" data-s="${k}">Add ${k}()</button>`).join('')}</div><div id="prm"></div></div>`;
+ $('#kwa').onclick=()=>{const nl={};document.querySelectorAll('#kw input').forEach(i=>{if(i.value.trim())nl[i.dataset.k]=i.value.trim()});const er=chk(nl);if(er){$('#kwm').innerHTML=`<div class="er">${esc(er)}</div>`;return}setLex(nl);$('#kwm').innerHTML='<div class="aha">Done. Your saved code now uses your words.</div>'};
+ $('#kwr').onclick=()=>{setLex({});workshop()};$('#pre').oninput=e=>{PRE=e.target.value;persist();prm()};
+ document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{const x=rw(SNIP[b.dataset.s],{},LEX);PRE=(PRE.trim()?PRE.trimEnd()+'\n\n':'')+x+'\n';$('#pre').value=PRE;persist();prm()});prm()}
+
+// UI. The pictures for each lesson type (pile, shelf and desk, windows, bags, gates, optimizer).
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+function viz(e){const k=CH[ci].v;if(k==='err')return gates(e);let h='';
+ const pile=`<div class="col"><div class="lb">Pile (stack): newest on top</div><div class="pile">${(e?e.st:[]).map((v,i,a)=>`<div class="tl${i===a.length-1?' nw':''}">${esc(SS(v))}</div>`).join('')||'<i class="dm">empty</i>'}</div></div>`;
+ const names=e?e.f.code[e.i].sc:[],G=e?e.G:{},stk=e?e.st:[];
+ const mem=`<div class="col"><div class="lb">Shelf (global variables)</div><div class="shelf">${Object.entries(G).map(([n,v])=>`<div class="bx"><b>${esc(n)}</b>${esc(SS(v))}</div>`).join('')||'<i class="dm">empty</i>'}</div></div><div class="col"><div class="lb">Desk (local variables)</div><div class="desk">${names.map((n,i)=>`<div class="bx lc"><b>${esc(n)}</b>${e.bs+1+i<stk.length?esc(SS(stk[e.bs+1+i])):'...'}</div>`).join('')||'<i class="dm">nothing here right now</i>'}</div></div>`;
+ const ins=`<div class="col wide"><div class="lb">Instructions made from your code</div><ol class="ins">${(e?e.f:P.f).code.map((c,i)=>`<li class="${e&&e.i===i?'on':''}"><span class="op">${c.op}</span>${esc(DS[c.op](c,(e?e.f:P.f).K))}</li>`).join('')}</ol></div>`;
+ if(k==='pile')h=pile+ins;if(k==='heap')h=heapView(e)+pile+mem+cb(e);
+ if(k==='mem')h=mem+`<div class="col wide"><details><summary>Show the steps</summary>${ins}</details></div>`;
+ if(k==='flow'){const ls=$('#src').value.split('\n'),vis=R.log.slice(0,pos+1).map(x=>x.line).filter((x,i,a)=>x!==a[i-1]).slice(-28);
+  h=`<div class="col wide"><div class="lb">Current line</div><div class="code">${ls.map((l,i)=>`<div class="${e&&i+1===e.line?'hl':''}${unr(i)?' nv':''}"><i>${i+1}</i>${esc(l)||' '}${unr(i)?'   (not reached)':''}</div>`).join('')}</div><div class="lb" style="margin-top:10px">Lines visited</div><div class="trail">${vis.map((x,i)=>`<span class="${i===vis.length-1?'cur':''}">${x}</span>`).join('')||'<i class="dm">none yet</i>'}</div></div>`+mem}
+ if(k==='tower'||k==='clos'||k==='cls'){const W=e?e.fr:[{n:'script',b:-1,f:P.f}];
+  h=`<div class="col"><div class="lb">Open windows (call stack)</div><div class="wins">${W.map((m,i)=>{const top=i===W.length-1,rc=k==='cls'&&e&&m.b>=0?e.st[m.b]:null,th=rc&&rc.kind==='inst'?(e.obs.find(o=>o.id===rc.id)||{}):null,ps=m.f.pn.map((p,j)=>`${esc(p)} = ${e&&m.b+1+j<e.st.length?esc(SS(e.st[m.b+1+j])):'?'}`).join(', ');return`<div class="win${top?' top':''}${top&&e&&/^Call/.test(e.say)?' nw':''}" style="margin-left:${i*16}px"><b>${m.n==='script'?'main program':esc(m.n)+'('+ps+')'}</b><small>${top?'working now':'waiting'}</small>${th?`<small>this = the ${esc(th.c)} object${th.f&&th.f.length?' ('+th.f.map(([a,b])=>esc(a)+' = '+esc(SS(b))).join(', ')+')':''}</small>`:''}</div>`}).join('')}</div></div>`+cb(e)+pile+(k==='clos'?pack(e):'')+(k==='cls'?objs(e):'')}
+ if(k==='opt'){const a=OP.r0,b=OP.r1,m=Math.max(a.log.length,1),bar=(l,r,p,c)=>`<div class="lb" style="margin-top:8px">${l}</div><div class="obar"><i style="width:${r.log.length/m*100}%;background:${c}"></i></div><b>${r.log.length} steps</b> <span class="dm">${p.f.code.length} instructions</span>`;
+  h=`<div class="col wide"><label class="sw"><input type="checkbox" id="opt" ${opt?'checked':''}> Optimizer ${opt?'on':'off'}</label>${bar('Without the optimizer',a,OP.p0,'var(--b)')}${bar('With the optimizer',b,OP.p1,'var(--a)')}<div class="say" style="margin-top:12px">${b.log.length<a.log.length?`Same answer (${esc(b.out.join(', '))}). ${a.log.length-b.log.length} steps fewer (${Math.round((1-b.log.length/a.log.length)*100)}% less).`:(OP.tot?`Changed ${OP.tot} thing${OP.tot===1?'':'s'}. Same number of steps.`:'None of my 4 tricks fit this program. A smarter optimizer may still find something.')}</div><div class="lb" style="margin-top:10px">What it changed</div>${[...new Set(OP.notes)].map(n=>`<div>${esc(n)}</div>`).join('')||'<i class="dm">nothing</i>'}${passes()}</div>`+cb(e)}
+ return h}
+const fl=(f,a=[])=>{a.push(f);f.K.forEach(k=>k&&k.code&&fl(k,a));return a},unr=i=>R.lim&&pos>=R.log.length-1&&P.f.code.some(c=>c.line===i+1)&&!R.log.some(x=>x.line===i+1);
+function never(){const sn=new Set(R.log.map(x=>x.line)),l=P.f.code.filter(c=>c.op==='PRINT'&&!sn.has(c.line)).map(c=>c.line);return l.length?` If the loop never ends, line ${l[0]} (print) is never reached.`:''}
+function pack(e){const C=(e?e.cls:[]).filter(c=>c.uv.length);return`<div class="col wide pk"><div class="lb">Bags: what each function carries</div>${C.map(c=>`<div class="win top"><b>${esc(c.n)}</b>${c.uv.map(u=>`<div class="bx${u.open?'':' lc'}"><b>${esc(u.n)}</b>${esc(SS(u.v))}<small>${u.open?'still on the desk':'now in the bag'}</small></div>`).join('')}</div>`).join('')||'<i class="dm">No function is carrying anything yet.</i>'}</div>`}
+function cb(e){const ls=$('#src').value.split('\n');return`<div class="col wide"><div class="lb">Current line</div><div class="code">${ls.map((l,i)=>`<div class="${e&&i+1===e.line?'hl':''}"><i>${i+1}</i>${esc(l)||' '}</div>`).join('')}</div></div>`}
+function gates(e){const bad=!P,end=P&&R.log.length&&pos>=R.log.length-1,run=e&&!end;
+ const g=bad?['','Never started','The program could not start.']:R.err&&end?['bad','Stopped',R.err]:run?['run','Running','Step '+(pos+1)+' of '+R.log.length]:e?['ok','Finished','The program ran to the end.']:['','Waiting','Press Run.'];
+ return`<div class="col wide"><div class="gate ${bad?'bad':'ok'}"><div class="lb">1. Check before running</div><b>${bad?'Mistake found':'No writing mistakes'}</b><div>${bad?esc(R.err):'The code is written correctly.'}</div></div><div class="gate ${g[0]}"><div class="lb">2. Running</div><b>${g[1]}</b><div>${esc(g[2])}</div></div></div>`}
+const PN={fold:'Do arithmetic before running',known:'Use the value of a variable that never changes',dead:'Remove a value that is loaded and thrown away',copy:'Skip a useless copy before return'};
+function passes(){return`<div class="lb" style="margin-top:12px">My 4 tricks</div>${Object.keys(PN).map(k=>`<div>${OP.rep[k]?'Used '+OP.rep[k]+' time'+(OP.rep[k]>1?'s':''):'Not used'}: ${PN[k]}</div>`).join('')}<div class="lb" style="margin-top:12px">Not done yet</div><div class="dm">Replace a call like add(a, b) with its body (inlining). Remove variables nobody reads. Reuse sums already worked out.</div>`}
+
+function objs(e){const O=e?e.obs:[],pv=pos>0?R.log[pos-1].obs:[],isNew=o=>e&&!pv.some(x=>x.id===o.id),C=O.filter(o=>o.k==='class'),I=O.filter(o=>o.k==='inst');
+ return`<div class="col wide"><div class="lb">Classes (blueprints)</div>${C.map(c=>`<div class="win top"><b>${esc(c.n)}</b>${c.s?'<small>inherits from '+esc(c.s)+'</small>':''}${isNew(c)?'<small>just made</small>':''}<div class="gl">methods: ${c.m.length?esc(c.m.join(', ')):'none yet'}</div></div>`).join('')||'<i class="dm">no class yet</i>'}${C.length?'<p class="dm hn">Each method is stored once, in the class. Every object of the class uses it.</p>':''}<div class="lb" style="margin-top:14px">Objects (made from a class)</div>${I.map(o=>`<div class="win"><b>${esc(o.c)} object</b><small>made from the class ${esc(o.c)}${isNew(o)?'. Just made.':''}</small>${o.f.map(([k,v])=>`<div class="gl">${esc(k)} = ${esc(SS(v))}</div>`).join('')||'<small>no fields yet</small>'}</div>`).join('')||'<i class="dm">no objects yet</i>'}${I.length?'<p class="dm hn">Each object has its own fields. Lox also says instance, as on the pile.</p>':''}</div>`}
+
+function heapView(e){const HC=CH[ci].heap||{cells:32,gc:false},C=HC.cells,H=e&&e.hp,ph=H&&H.ph,own=Array(C).fill(null),gh={};
+ if(H){H.o.forEach(o=>o.c.forEach((x,i)=>own[x]={o,first:i===0}));H.g.forEach(o=>o.c.forEach((x,i)=>gh[x]={o,first:i===0}))}
+ const cell=x=>{const w=own[x],g=gh[x];let cl='hc',t='';
+  if(w){cl+=ph==='start'?' u':ph==='mark'?(w.o.r?' u m':' g'):(w.o.r?' u':' g');t=w.first?'#'+w.o.id:''}else if(g){cl+=' f';t=g.first?'#'+g.o.id:''}
+  return`<div class="${cl}" title="${w?esc(w.o.l):g?esc(g.o.l)+' (freed)':'free'}">${t}</div>`};
+ const held=o=>o.r?(o.h&&o.h.length?'Held by '+esc(o.h.slice(0,2).join(', '))+(o.h.length>2?', ...':'')+'.':''):'Nothing holds it.',
+  list=H?H.o.map(o=>`<li><b>#${o.id}</b> ${esc(o.l)} (${o.c.length} cell${o.c.length>1?'s':''}): ${ph==='start'?'in the heap':o.r?'in use. '+held(o):'unused. '+held(o)}</li>`).join('')+H.g.map(o=>`<li><b>#${o.id}</b> ${esc(o.l)}: freed</li>`).join(''):'',
+  PH=[['start','Start'],['mark','Mark'],['sweep','Sweep']],
+  strip=HC.gc?`<ol class="phs" aria-label="Collector steps">${PH.map(([k,t],j)=>`<li class="${ph===k?'on':''}"><span>${j+1}</span>${t}</li>`).join('')}</ol>`:'';
+ return`<div class="col wide"><div class="lb">Memory (heap)</div><div class="hst"><span><b>${H?H.used:0} of ${C}</b> cells used</span><span>Garbage collector: <b>${HC.gc?'on':'off'}</b></span>${HC.gc?`<span>Collector has run: <b>${H?H.gcs:0} time${H&&H.gcs===1?'':'s'}</b></span>`:''}</div><div class="hst"><span>Objects made: <b>${H?H.made:0}</b></span><span>In use: <b>${H?H.o.filter(o=>o.r).length:0}</b></span><span>Unused: <b>${H?H.o.filter(o=>!o.r).length:0}</b></span>${HC.gc?`<span>Freed: <b>${H?H.made-H.o.length:0}</b></span>`:''}</div>${strip}<div class="hg">${Array.from({length:C},(_,x)=>cell(x)).join('')}</div><div class="hl"><span><i class="hc u sw"></i> in use</span><span><i class="hc g sw"></i> unused (garbage)</span><span><i class="hc f sw"></i> just freed</span><span><i class="hc sw"></i> free</span></div><p class="dm hn">This grid is simplified. A string takes 1 cell, plus 1 for every 8 letters. Real clox starts collecting near 1 MB.</p><ul class="ol" tabindex="0" aria-label="Every object in the heap">${list||'<li class="dm">No objects yet.</li>'}</ul></div>`}
+
+// UI. "More details" tabs (Pieces, Instructions, Step list) and Explain a line.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const KN={number:'number',string:'text',identifier:'name'};
+function words(){let t;try{t=scan($('#src').value)}catch(x){return`<p class="dm">${esc(x.message)}</p>`}
+ t=t.filter(x=>x.k!=='eof');const kd=k=>KN[k]||(KW.has(k)?'word':'symbol');
+ return`<p>Your code is cut into <b>${t.length}</b> pieces (tokens). Hover a piece to see its technical name.</p><div>${t.map(x=>`<span class="tk ${kd(x.k)}" title="technical name: ${x.k.toUpperCase()}">${esc(x.x)}<small>${kd(x.k)}</small></span>`).join('')}</div>`}
+function uh(e){if(ut==='w')return words();if(!P)return'<p class="dm">Fix the mistake first and this page will fill in.</p>';
+ if(ut==='s')return fl(P.f).map(f=>`<div class="lb" style="margin-top:8px">${f===P.f?'Main program':'Function '+esc(f.name)}</div><ol class="ins">${f.code.map((c,i)=>`<li class="${e&&e.f.code===f.code&&e.i===i?'on':''}"><span class="op">${c.op}</span>${esc(DS[c.op](c,f.K))}</li>`).join('')}</ol>`).join('');
+ return`<table class="lg"><tr><th>#</th><th>Line</th><th>Step</th><th>What happened</th></tr>${R.log.slice(0,300).map((l,i)=>`<tr class="${i===pos?'on':''}"><td>${i+1}</td><td>${l.line}</td><td>${l.f.code[l.i].op}</td><td>${esc(l.say)}</td></tr>`).join('')}</table>${R.log.length>300?`<p class="dm">Showing the first 300 of ${R.log.length}.</p>`:''}`}
+function lineInfo(src){let t;try{t=scan(src)}catch(e){return{}}
+ const st=[],o={};let pc=0,pf=0,cur=0;
+ for(const x of t){if(x.k==='eof')break;if(x.line!==cur){cur=x.line;o[cur]={top:st[st.length-1]||''}}
+  if(x.k==='class')pc=1;else if(x.k==='fun')pf=1;
+  else if(x.k==='{'){const top=st[st.length-1],kd=pc?'class':pf?'fn':top==='class'?'method':'block';st.push(kd);(o[cur].opens=o[cur].opens||[]).push(kd);pc=pf=0}
+  else if(x.k==='}'){(o[cur].closes=o[cur].closes||[]).push(st.pop())}}
+ return o}
+function explain(L){const src=$('#src').value.split('\n')[L-1];if(src===undefined)return'There is no such line.';let tk;try{tk=scan(src)}catch(e){return'I cannot read this line yet: '+e.message}
+ tk=tk.filter(x=>x.k!=='eof');if(!tk.length)return'This line is empty or only a comment, so the computer skips it.';
+ const w0={var:'Makes a new variable and gives it a value.',print:'Works out a value and shows it on the screen.',if:'Asks a question. The next part only runs if the answer is true.',else:'The other branch: it runs when the question above was false.',while:'Repeats the part below for as long as the question is true.',for:'A loop with a start, a question and a step, all in one line.',fun:'Defines a function. A function is a block of code with a name that you can use again.',return:'Hands a value back to whoever called the function and leaves it.','}':'Closes a block. Variables made inside it are cleared away.','{':'Opens a block with its own desk for variables.'}[tk[0].k];
+ const I=lineInfo($('#src').value)[L]||{},k0=tk[0].k,k1=tk[1]&&tk[1].k,has=k=>tk.some(x=>x.k===k),cl=I.closes&&I.closes[0];
+ const w=k0==='class'?(has('<')?'Defines a class that inherits from another class. It starts with the methods of its superclass.':'Defines a class: a blueprint for objects. The methods inside it belong to the class.')
+  :k0==='identifier'&&k1==='('&&I.top==='class'?(tk[0].x==='init'?'Defines the method init. It runs by itself each time a new object is made.':'Defines a method: a function that belongs to the class. Inside it, this is the object.')
+  :k0==='this'&&k1==='.'&&has('=')?'Stores a value in a field of this object.'
+  :k0==='super'?'Calls a method of the superclass.'
+  :k0==='{'&&I.opens&&I.opens[0]==='class'?'Opens the body of the class. The methods go inside it.'
+  :k0==='{'&&I.opens&&I.opens[0]==='method'?'Opens the body of the method. Its steps run when the method is called.'
+  :k0==='{'&&I.opens&&I.opens[0]==='fn'?'Opens the body of the function. Its steps run when the function is called.'
+  :k0==='}'&&cl==='method'?'Closes the method. Here the machine makes the function and adds it to the class.'
+  :k0==='}'&&cl==='class'?'Closes the class. The class is complete, so the machine takes it off the pile.'
+  :k0==='}'&&cl==='fn'?'Closes the function body.'
+  :k0==='identifier'&&k1==='.'&&has('(')&&!has('=')?'Calls a method on an object. The answer it gives back is thrown away.'
+  :k0==='identifier'&&k1==='.'&&has('=')?'Stores a value in a field of an object.'
+  :w0||'Works something out and throws the answer away. Usually this changes a variable or calls a function.';
+
+ const hd=(k0==='identifier'&&k1==='('&&I.top==='class')||k0==='fun',ins=P?fl(P.f).flatMap(g=>g.code.filter(c=>c.line===L).map(c=>DS[c.op](c,g.K))):[],runs=P?R.log.filter(l=>l.line===L).length:0;
+ return`${w}${ins.length?` It became ${ins.length} instruction${ins.length>1?'s':''}. First: ${ins.slice(0,3).join('; ')}${ins.length>3?'; ...':''}.`:''}${hd&&!ins.length?' It has no steps of its own. The steps are in the body.':P&&R.log.length?` In this run it ran ${runs} time${runs===1?'':'s'}.`:''}`}
+
+// UI. Running a program: draw, check task, recompute on edit, play/step, confetti.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+function burst(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const r=$('#task').getBoundingClientRect(),h=document.createElement('div');h.className='bst';h.style.cssText=`left:${r.left+r.width/2}px;top:${r.top}px`;
+ for(let i=0;i<20;i++){const s=document.createElement('i');s.style.cssText=`--x:${(Math.random()-.5)*380}px;--y:${-60-Math.random()*120}px;--c:var(--${'abpr'[i%4]})`;h.append(s)}document.body.append(h);setTimeout(()=>h.remove(),1100)}
+function draw(){const e=pos>=0?R.log[pos]:null,c=CH[ci],end=pos>=R.log.length-1;
+ $('#er').innerHTML=R.err&&c.v!=='err'&&(!P||end&&pos>=0)?`<div class="er">${esc(R.err)}</div>`:'';
+ $('#say').innerHTML=tx(!P?'Fix the mistake first. Then I can show the steps.':e?(end&&R.err?(R.lim?R.err+never():'The computer stopped here. '+R.err):e.say):'Press Run to start. Or press Step to go one move at a time.');
+ $('#viz').innerHTML=P&&(CH[ci].v!=='opt'||OP)||CH[ci].v==='err'?viz(e):'';
+ $('#scr').textContent=P&&e?(R.out.slice(0,e.o).join('\n')||(end?(R.lim?'(nothing printed yet)':'(nothing was printed)'):'')):'';
+ $('#tl').max=P?R.log.length:0;$('#tl').value=pos+1;$('#sc').textContent=P?`Step ${Math.max(0,pos+1)} of ${R.log.length}`:'';$('#run').textContent=timer?'Pause':(pos>=0&&R&&pos>=R.log.length-1?'Run again':'Run');$('#why').innerHTML=e?tx(e.hp&&e.hp.ph?GCWHY[e.hp.ph]:WHY[e.f.code[e.i].op]||''):'Tip: tap a word with a dotted underline to see what it means.';$('#uhb').innerHTML=uh(e);if($('#xo'))$('#xo').textContent=explain(+$('#xl').value||1);
+ if(P&&pos>=0&&pos>=R.log.length-1){if(R.lim)award('inf');else if(R.err)award('bug');else{award('ran');if(PRE.trim()&&libNames().some(n=>$('#src').value.includes(n+'(')))award('lib')}}}
+function check(){const ok=c=>CH[ci].ok(R);const t=$('#task');if(ok()){t.classList.add('ok');$('#nxt')&&$('#nxt').classList.add('pulse');$('#tk').textContent='Solved.';$('#aha').hidden=false;if(!done.has(ci)){done.add(ci);try{localStorage.setItem('done',JSON.stringify([...done]))}catch(e){}rail();burst();award('solve');if(done.size>=5)award('five');if(done.size>=CH.filter(c=>c.p&&!c.pg).length)award('all');lvl()}}else{t.classList.remove('ok');$('#nxt')&&$('#nxt').classList.remove('pulse');$('#tk').textContent='';$('#aha').hidden=!done.has(ci)}}
+function recompute(){stop();try{mkLib();const p0=build($('#src').value);P=p0;R=run(P,LIBG,CH[ci].heap);OP=null;if(CH[ci].v==='opt'){const p1=optimize(p0);const r1=run(p1,LIBG);OP={p0,p1,r0:R,r1,notes:p1.notes,rep:p1.rep,tot:Object.values(p1.rep).reduce((x,y)=>x+y,0)};if(opt&&r1.out.join()===R.out.join()&&!!r1.err===!!R.err){if(1-r1.log.length/R.log.length>=.2)award('speed');P=p1;R=r1}}}catch(e){award('bug');P=null;R={log:[],out:[],err:`Line ${e.line}: ${e.message}`}}pos=-1;fitSrc();draw();check();cmap()}
+function stop(){clearInterval(timer);timer=0}
+function go(d){if(!P)return;pos=Math.max(-1,Math.min(R.log.length-1,pos+d));if(pos>=R.log.length-1)stop();draw()}
+
+// UI. Tap-to-explain terms (popover), the "Read more" card, and the piece-by-piece table.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const RX=new RegExp('\\b('+Object.keys(TERMS).sort((a,b)=>b.length-a.length).map(k=>k+'s?').join('|')+')\\b','gi');
+const tk0=m=>{const k=m.toLowerCase();return TERMS[k]?k:k.replace(/s$/,'')};
+const tx=s=>esc(s).replace(RX,m=>`<abbr class="term" tabindex="0" data-t="${tk0(m)}">${m}</abbr>`);
+const tip=document.createElement('div');
+tip.id='tip';
+tip.hidden=true;
+document.body.append(tip);
+const showTip=el=>{const k=el.dataset.t;tip.innerHTML=`<b>${esc(k)}</b><p>${esc(TERMS[k])}</p>`;tip.hidden=false;const r=el.getBoundingClientRect();tip.style.left=Math.max(8,Math.min(innerWidth-340,r.left+scrollX))+'px';tip.style.top=(r.bottom+8+scrollY)+'px'};
+document.addEventListener('mouseover',e=>{const x=e.target.closest&&e.target.closest('.term');if(x)showTip(x)});
+document.addEventListener('mouseout',e=>{if(e.target.closest&&e.target.closest('.term'))tip.hidden=true});
+document.addEventListener('focusin',e=>{const x=e.target.closest&&e.target.closest('.term');if(x)showTip(x)});
+document.addEventListener('focusout',()=>{tip.hidden=true});
+document.addEventListener('click',e=>{const x=e.target.closest&&e.target.closest('.term');if(x)showTip(x);else if(!e.target.closest('#tip'))tip.hidden=true});
+function learn(i){const a=ART[i];if(!a)return null;const d=document.createElement('div');d.className='card learn';
+ d.innerHTML=`<div class="kicker">Read more</div><h2>How it works</h2><h3>Before you start</h3><dl class="terms">${a.before.map(x=>`<dt>${esc(x[0])}</dt><dd>${tx(x[1])}</dd>`).join('')}</dl><h3>Step by step</h3><ol class="steps">${a.how.map(s=>`<li>${tx(s)}</li>`).join('')}</ol><h3>How the compiler does it</h3><ul class="steps">${a.comp.map(s=>`<li>${tx(s)}</li>`).join('')}</ul><div id="cmap"></div><h3>Key points</h3><ul class="steps key">${a.key.map(s=>`<li>${tx(s)}</li>`).join('')}</ul>`;return d}
+function cmap(){const el=$('#cmap');if(!el)return;if(!P){el.innerHTML='';return}
+ const H={CONSTANT:' The value goes into the constants table.',ADD:' It comes after its two values, because the machine needs them on the stack first.',SUBTRACT:' It comes after its two values.',MULTIPLY:' It comes after its two values.',DIVIDE:' It comes after its two values.',
+  CLASS:' It makes an empty class and puts it on the pile.',METHOD:' It adds the function on top of the pile to the class below it.',INHERIT:' It copies the methods of the superclass into the class.',
+  SET_PROPERTY:' It stores the top value in a field of the object.',GET_PROPERTY:' It reads a field of the object.',INVOKE:' It finds the method and calls it in one step.',CALL:' It calls the function or class below its values. Calling a class makes a new object.',DEFINE_GLOBAL:' It stores the top value on the shelf under this name.',SUPER_INVOKE:' It calls a method of the superclass.',GET_SUPER:' It finds a method in the superclass.'},
+ all=fl(P.f).flatMap((f,fi)=>f.code.map((c,i)=>({c,f,fi,i})).filter(r=>r.c.tok)).sort((a,b)=>a.c.tok.line-b.c.tok.line||a.fi-b.fi||a.i-b.i),
+ LIM=30,rows=all.slice(0,LIM),dot=c=>c.tok.x==='.'?'.'+c.nm:c.tok.x,
+ say=c=>c.tok.x==='this'?'The compiler read this and emitted GET_LOCAL. In a method, this is the first place in the window.':c.tok.syn?'The compiler put '+c.tok.x+' on the pile again. The next instruction needs it there.':'The compiler read '+dot(c)+' and emitted '+c.op+'.'+(H[c.op]||'');
+ el.innerHTML=`<div class="lb" style="margin-top:16px">Your program, piece by piece</div><div class="tw"><table class="lg"><tr><th>Token</th><th>Line</th><th>Instruction</th><th>What the compiler did</th></tr>${rows.map(({c,f})=>`<tr><td><code>${esc(dot(c))}</code></td><td>${c.tok.line}</td><td><b>${c.op}</b>${c.op==='CONSTANT'?' ('+esc(S2(f.K[c.arg]))+')':''}${f===P.f?'':`<small class="dm"> in ${esc(f.name)}</small>`}</td><td>${tx(say(c))}</td></tr>`).join('')}</table></div>${all.length>LIM?`<p class="dm">Showing the first ${LIM} of ${all.length}.</p>`:''}`}
+
+// UI. Practice page: sample programs.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+function recipes(){const m=document.createElement('div');m.className='card';
+ m.innerHTML=`<h3>Sample programs</h3><p class="lead">Pick one. It opens in the editor above. Run it, then change it. Your own code is kept.</p><div class="rc">${RC.map((r,k)=>`<button class="rcb" data-k="${k}"><small>${r.g}</small><b>${esc(r.t)}</b>${esc(r.w)}</button>`).join('')}</div><div id="rinfo"></div><div class="ctl"><button class="btn" id="rback" ${codes.own?'':'hidden'}>Back to my code</button></div>`;
+ $('#main').append(m);const set=v=>{const s=$('#src');s.value=v;codes[ci]=v;s.rows=Math.max(3,Math.min(14,v.split('\n').length+1));persist();recompute();s.scrollIntoView({block:'center'})};
+ m.onclick=e=>{const b=e.target.closest('.rcb');if(b){award('chef');const r=RC[+b.dataset.k],cur=$('#src').value;if(!RC.some(x=>rw(x.p,{},LEX)===cur))codes.own=cur;set(rw(r.p,{},LEX));$('#rback').hidden=!codes.own;
+  $('#rinfo').innerHTML=`<div class="aha" style="animation:none;background:var(--bb);border-color:var(--b)"><b>${esc(r.t)}.</b> ${esc(r.w)}<p><b>How it works.</b> ${esc(r.h)}</p><p><b>Try changing.</b> ${esc(r.x)}</p></div>`}else if(e.target.id==='rback'&&codes.own!==undefined)set(codes.own)}}
+
+// UI. Builds a lesson page (editor, controls, picture, task, nav) and the number circles.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const nxi=i=>CH.findIndex((x,j)=>j>i&&x.p),pvi=i=>{for(let j=i-1;j>=0;j--)if(CH[j].p)return j;return -1};
+function chapter(i){scrollTo(0,0);if($('#src')){codes[ci]=$('#src').value;persist()}ci=i;stop();const c=CH[i];if(!c.pg)lastL=i;$('.wrap').classList.toggle('ws',!!c.pg);document.querySelectorAll('#vw button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===(c.pg?'p':'l')));
+ $('#main').innerHTML=`<div class="card"><div class="kicker">${c.pg?"Practice":"Lesson "+(i+1)+" of "+CH.filter(x=>!x.pg).length+": "+c.n}</div><h2>${c.q}</h2><p class="lead">${tx(c.lead)}</p>${i===0?'<p class="coach">Steps: 1 Read the code. 2 Press Run. 3 Watch. 4 Try the task.</p>':''}<div class="lw"><div class="lcol"><div class="lb"><span class="n">1</span>Read the code. You can change it.</div><textarea id="src" wrap="off" spellcheck="false" aria-label="Your code"></textarea><div id="er"></div>
+<div class="lb" style="margin-top:22px"><span class="n">2</span>Press Run</div><div class="ctl" style="margin-top:0"><button class="btn pri pulse" id="run">Run</button><button class="btn" id="stp">Step</button><button class="btn" id="rst">Start over</button></div>
+<div class="tlr"><input type="range" id="tl" min="0" max="0" value="0" aria-label="Position in the run"><span class="dm" id="sc"></span></div>
+<div class="ctl"><button class="btn tg" id="fast" aria-pressed="false">Faster</button></div>
+<details class="uh"><summary>More</summary><div class="ctl"><button class="btn" id="nxo">Next output</button><button class="btn" id="end">Skip to end</button><button class="btn" id="orig">Reset example</button></div><div class="lb">Explain a line</div><div class="ctl" style="margin:0 0 8px"><label>Line number <input type="number" id="xl" min="1" value="1" style="width:5em;font:17px var(--m);padding:6px"></label></div><div id="xo" class="lead" style="font-size:18px"></div></details></div>
+<div class="rcol"><div class="lb"><span class="n">3</span>Watch what happens</div><div class="say" id="say" aria-live="polite"></div><div class="why" id="why"></div><div class="viz" id="viz"></div><div class="lb" style="margin-top:24px">Screen (output)</div><div class="scr" id="scr"></div></div></div><div class="task" id="task"><span class="n">4</span><b>Try it yourself:</b> ${esc(c.task)} <b id="tk"></b></div><div class="aha" id="aha" hidden><b>Aha.</b> ${tx(c.aha)}</div><details class="uh"><summary>More details</summary><div class="seg" id="tabs"><button data-t="w" aria-pressed="true">Pieces</button><button data-t="s" aria-pressed="false">Instructions</button><button data-t="l" aria-pressed="false">Step list</button></div><div id="uhb"></div></details><div class="nav" ${c.pg?"hidden":""}><button class="btn" id="prv" ${pvi(i)<0?"hidden":""}>Previous lesson</button><button class="btn pri" id="nxt" ${nxi(i)<0?"hidden":""}>${CH[nxi(i)]&&CH[nxi(i)].pg?"Go to Practice":"Next lesson"}</button></div></div>`;
+ const s=$('#src');s.value=codes[i]!==undefined?codes[i]:starter(i);s.rows=Math.max(3,Math.min(14,s.value.split('\n').length+1));fitSrc();let d;s.oninput=()=>{fitSrc();clearTimeout(d);d=setTimeout(()=>{codes[ci]=s.value;persist();recompute()},250)};
+ const base=()=>Math.min(700,Math.max(40,18000/Math.max(1,R.log.length)))/SPD,tick=()=>{go(1);if(timer&&pos<R.log.length-1)timer=setTimeout(tick,Math.min(1200,base()*(/^Show/.test(R.log[pos].say)?10:1)))};
+ $('#run').onclick=()=>{$('#run').classList.remove('pulse');if(timer){stop();draw();return}if(!P)return;if(pos>=R.log.length-1)pos=-1;timer=1;tick()};
+ $('#nxo').onclick=()=>{stop();if(!P)return;const cu=pos>=0?R.log[pos].o:0;let k=pos+1;while(k<R.log.length-1&&R.log[k].o<=cu)k++;pos=Math.min(k,R.log.length-1);draw()};
+ $('#tl').oninput=e=>{stop();pos=+e.target.value-1;draw()};$('#xl').oninput=()=>draw();
+ $('#fast').onclick=e=>{SPD=SPD===1?4:1;e.currentTarget.setAttribute('aria-pressed',SPD>1)};$('#fast').setAttribute('aria-pressed',SPD>1);
+ $('#stp').onclick=()=>{$('#run').classList.remove('pulse');stop();go(1)};$('#end').onclick=()=>{stop();pos=R.log.length-1;draw()};$('#rst').onclick=()=>{stop();pos=-1;draw()};
+ $('#orig').onclick=()=>{s.value=starter(i);codes[i]=s.value;persist();recompute()};
+ $('#tabs').onclick=e=>{const b=e.target.closest('button');if(b){ut=b.dataset.t;document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));draw()}};
+ $('#viz').onchange=e=>{if(e.target.id==='opt'){opt=e.target.checked;recompute()}};$('#prv').onclick=()=>chapter(pvi(i));$('#nxt').onclick=()=>chapter(nxi(i));const lc=learn(i);if(lc)$('#main').append(lc);$('#main').append($('.nav'));recompute();rail();if(c.pg)recipes();else pagesInit(i)}
+function fitSrc(){const s=$('#src');if(!s)return;s.style.height='auto';s.style.height=Math.min(s.scrollHeight+s.offsetHeight-s.clientHeight,Math.round(innerHeight*.7))+'px'}
+addEventListener('resize',fitSrc);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSrc);
+function rail(){const L=CH.filter(c=>!c.pg),rd=L.filter(c=>c.p).length;$('#prog').textContent=`${rd} of ${L.length} lessons ready`;$('#pb').style.width=done.size/rd*100+'%';
+ $('#rail').innerHTML=CH.map((c,i)=>c.pg?'':`<button ${c.p?'':'disabled'} ${i===ci?'aria-current="true"':''} class="${done.has(i)?'dn':''}" data-i="${i}" title="${c.n}${c.p?'':' (coming soon)'}" aria-label="Lesson ${i+1}: ${c.n}">${i+1}</button>`).join('');
+ document.querySelectorAll('#rail button').forEach(b=>b.onclick=()=>chapter(+b.dataset.i))}
+
+// UI. Multi-page lessons: a page stepper, idea / quiz / recap pages, and pictures taken from the real engine.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+let pgi={},pgv={},qzs={};
+try{pgi=JSON.parse(localStorage.getItem('pgi')||'{}');pgv=JSON.parse(localStorage.getItem('pgv')||'{}');qzs=JSON.parse(localStorage.getItem('qzs')||'{}')}catch(e){}
+const savePg=()=>{try{localStorage.setItem('pgi',JSON.stringify(pgi));localStorage.setItem('pgv',JSON.stringify(pgv));localStorage.setItem('qzs',JSON.stringify(qzs))}catch(e){}};
+// A picture of one moment of a small program, made with the real engine. Pages use it so the text always matches the machine.
+function snap(sp){const sv={ci,P,R,pos};CH.push({p:sp.prog,v:sp.v,heap:sp.heap});
+ try{ci=CH.length-1;P=build(sp.prog);R=run(P,LIBG,sp.heap);const n=R.log.length-1,a=sp.at,f=a===undefined||a==='end'?n:typeof a==='number'?a:a.inst?R.log.findIndex(e=>e.obs&&e.obs.filter(o=>o.k==='inst').length>=a.inst):a.ph?R.log.findIndex(e=>e.hp&&e.hp.ph===a.ph):n;
+  pos=f<0?n:f;const e=R.log[pos];return sp.part==='objs'?objs(e):sp.part==='heap'?heapView(e):viz(e)}finally{CH.pop();ci=sv.ci;P=sv.P;R=sv.R;pos=sv.pos}}
+const seeBox=(sp,cap)=>`<figure class="pgsee"><div class="viz">${snap(sp)}</div>${cap?`<figcaption class="dm">${tx(cap)}</figcaption>`:''}</figure>`;
+const codeBox=c=>`<pre class="qc" tabindex="0" aria-label="Program">${c.split('\n').map((l,k)=>`<span class="ln">${k+1}</span>${esc(l)}`).join('\n')}</pre>`;
+function pagesInit(i){const L=PG[i];if(!L)return;const card=$('.card');
+ const k=Math.min(Math.max(0,pgi[i]||0),L.length-1);
+ card.querySelector('.lead').insertAdjacentHTML('afterend',`<nav class="pgs" id="pgs" aria-label="Pages in this lesson"><ol>${L.map((p,j)=>`<li><button type="button" data-k="${j}"><span class="pn">${j+1}</span><span class="pt">${esc(p.nav)}</span></button></li>`).join('')}</ol></nav><div id="pgx" class="pgx"></div><div class="sr" id="pgan" aria-live="polite"></div>`);
+ const pn=document.createElement('div');pn.className='pnav';pn.innerHTML='<button class="btn" id="pback" type="button">Back</button><span class="dm" id="ppos"></span><button class="btn pri" id="pnext" type="button"></button>';$('#main').insertBefore(pn,$('.nav'));
+ $('#pgs').onclick=e=>{const b=e.target.closest('button');if(b)showPage(i,+b.dataset.k,true)};
+ $('#pback').onclick=()=>showPage(i,pgi[i]-1,true);$('#pnext').onclick=()=>showPage(i,pgi[i]+1,true);
+ showPage(i,k,false)}
+function showPage(i,k,focus){const L=PG[i],p=L[k];if(!p)return;pgi[i]=k;(pgv[i]=pgv[i]||[]);if(!pgv[i].includes(k))pgv[i].push(k);savePg();
+ const T=p.type,card=$('.card'),last=k===L.length-1;card.dataset.pg=T;
+ card.querySelector('.lead').hidden=true;const co=card.querySelector('.coach');if(co)co.hidden=true;
+ const lc=document.querySelector('.learn');if(lc)lc.hidden=T!=='deep';
+ document.querySelectorAll('#pgs button').forEach(b=>{const j=+b.dataset.k;b.setAttribute('aria-current',j===k?'step':'false');b.classList.toggle('v',pgv[i].includes(j)&&j!==k);b.setAttribute('aria-label','Page '+(j+1)+' of '+L.length+': '+L[j].nav+(j===k?' (current page)':''))});
+ $('#pback').hidden=k===0;$('#pnext').hidden=last;$('#pnext').textContent='Next: '+(L[k+1]?L[k+1].nav:'');$('#ppos').textContent='Page '+(k+1)+' of '+L.length;
+ $('.nav').hidden=!last;
+ const box=$('#pgx');box.innerHTML=`<h3 id="pgh" tabindex="-1">${esc(p.title||p.nav)}</h3>`;
+ if(T==='idea'){box.insertAdjacentHTML('beforeend',p.body.map(t=>`<p class="pgp">${tx(t)}</p>`).join('')+(p.see?seeBox(p.see,p.see.cap):''))}
+ else if(T==='play')box.insertAdjacentHTML('beforeend',`<p class="look"><b>What to look for.</b> ${tx(p.look)}</p>`);
+ else if(T==='deep')box.insertAdjacentHTML('beforeend',`<p class="pgp">${tx(p.intro)}</p>`);
+ else if(T==='quiz')quiz(i,p,box);
+ else if(T==='recap'){const a=ART[i];box.insertAdjacentHTML('beforeend',`<h4>Key points</h4><ul class="steps key">${(a?a.key:[]).map(s=>`<li>${tx(s)}</li>`).join('')}</ul><h4>You can now</h4><ul class="steps">${p.can.map(s=>`<li>${tx(s)}</li>`).join('')}</ul>${qzs[i]?`<p class="dm">Your best score on the check: ${qzs[i].best} of ${qzs[i].total}.</p>`:''}`)}
+ $('#pgan').textContent=`Page ${k+1} of ${L.length}: ${p.nav}`;
+ if(T==='play'||T==='try'||T==='deep'){fitSrc();draw()}
+ if(focus){scrollTo(0,0);$('#pgh').focus({preventScroll:true})}}
+function quiz(i,p,box){const N=p.qs.length;let n=0,sc=0,miss=[];
+ const ask=()=>{const Q=p.qs[n];box.querySelector('.qz')&&box.querySelector('.qz').remove();
+  box.insertAdjacentHTML('beforeend',`<div class="qz"><div class="dm" id="qn">Question ${n+1} of ${N}</div><h4 class="qq">${tx(Q.q)}</h4>${Q.code?codeBox(Q.code):''}<div class="qo" role="group" aria-label="Answers">${Q.opts.map((o,k)=>`<button type="button" class="opt" data-k="${k}">${esc(o)}</button>`).join('')}</div><div id="qf" aria-live="polite"></div></div>`);
+  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k===Q.a;if(ok)sc++;else miss.push(Q.id);
+   box.querySelectorAll('.opt').forEach(x=>{x.disabled=true;const j=+x.dataset.k;if(j===Q.a){x.classList.add('ok');x.insertAdjacentHTML('beforeend','<b class="tag"> Correct answer</b>')}else if(j===k){x.classList.add('no');x.insertAdjacentHTML('beforeend','<b class="tag"> Not quite</b>')}});
+   $('#qf').innerHTML=`<p class="fb ${ok?'ok':'no'}"><b>${ok?'Correct.':'Not quite.'}</b> ${tx(Q.why)}</p>${Q.see?`<div class="dm">What the machine shows</div>${seeBox(Q.see)}`:''}<button type="button" class="btn pri" id="qnx">${n+1<N?'Next question':'See my score'}</button>`;
+   $('#qnx').onclick=()=>{n++;if(n<N)ask();else fin()};$('#qnx').focus({preventScroll:true})})};
+ const fin=()=>{box.querySelector('.qz').remove();const b=qzs[i]?Math.max(qzs[i].best,sc):sc;qzs[i]={best:b,total:N};savePg();
+  box.insertAdjacentHTML('beforeend',`<div class="qz qr"><h4>You got ${sc} of ${N}.</h4><p class="pgp">${sc===N?'Every answer was right.':'Read the explanations above again, or run the code on the Watch page. Then try the check once more.'}</p><button type="button" class="btn" id="qre">Try the check again</button></div>`);$('#qre').onclick=()=>{n=0;sc=0;miss=[];box.querySelector('.qz').remove();ask()}};
+ ask()}
+document.addEventListener('keydown',e=>{if(!PG[ci]||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;const t=e.target,tag=t&&t.tagName;if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||(t&&t.isContentEditable))return;
+ if(e.key==='ArrowRight'&&pgi[ci]<PG[ci].length-1){e.preventDefault();showPage(ci,pgi[ci]+1,true)}else if(e.key==='ArrowLeft'&&pgi[ci]>0){e.preventDefault();showPage(ci,pgi[ci]-1,true)}});
+
+// UI. Start here, view switching, Info pages.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+function intro(){stop();$('.wrap').classList.add('ws');try{localStorage.setItem('seen','1')}catch(e){}
+ const BP=withL({},()=>{const ex='print 1 + 2;',tk=scan(ex).filter(x=>x.k!=='eof').map(x=>x.x),Q=compile(ex),W=run(Q);return[['Your code',ex,'You write this. The computer cannot use it yet.'],['Scanner',tk.join('  '),'Cuts the code into tokens.'],['Compiler',Q.f.code.map(c=>c.op).join('  '),'Turns the tokens into a list of instructions (bytecode).'],['Virtual machine','uses the stack','Runs the instructions one by one on a stack.'],['Output',W.out.join(', '),'The result shown on the screen.']]});
+ const LS=[["Adding numbers", "How one line becomes small steps."], ["Variables", "Where values are kept."], ["Loops", "How code repeats."], ["Functions", "How a function calls itself."], ["Closures", "How a function remembers a value."], ["Classes", "How an object gets its methods."], ["Memory", "Where objects live."], ["Mistakes", "What happens when the code is wrong."], ["Garbage collection", "How unused memory is freed."], ["Optimization", "The same answer in fewer steps."]];
+ $('#main').innerHTML=`<div class="card hero"><h1>After you press Run</h1><p class="big">You write code and press Run. A compiler and a virtual machine then work on it. Here you can watch both, one step at a time.</p><p class="dm" style="margin-top:18px;font-size:17px">Scroll down to see how it works. The start button is at the end.</p></div>
+<div class="card"><h3>How to use this</h3><ol class="how"><li><b>1</b>Open a lesson.</li><li><b>2</b>Press Run and watch.</li><li><b>3</b>Change the code. Run again.</li><li><b>4</b>Read the notes below each lesson to learn why.</li></ol></div>
+<div class="card"><h3>The big picture</h3><p class="lead">This is what happens to one line of code after you press Run.</p><div class="pipe5">${BP.map((b,i)=>`<div class="pst"><div class="pn5">${i+1}</div><b>${b[0]}</b><code>${esc(b[1])}</code><p>${tx(b[2])}</p></div>`).join('')}</div></div>
+<div class="card"><h3>Lessons</h3><ul class="lessons-list">${LS.map((l,i)=>`<li ${/Coming soon/.test(l[1])?'':`data-go="${i}" role="button" tabindex="0"`}><b>${i+1}</b><span><strong>${l[0]}</strong> <span class="dm">${l[1]}</span></span></li>`).join('')}</ul></div>
+<div class="card"><h3>Also here</h3><ul class="lessons-list"><li><b>Practice</b><span>Sample programs. Run them and change them.</span></li><li><b>Customize</b><span>Rename keywords. Add your own functions.</span></li><li><b>Info</b><span>Short notes: what Lox is, interpreter or compiler, how to build a language.</span></li></ul></div>
+<div class="card"><h3>Good to know</h3><p class="lead">Nothing to install. Your code is saved on this device. The language is Lox, a small language from the book Crafting Interpreters.</p></div>
+<div class="card hero"><h3>Ready?</h3><p class="lead">Start with Lesson 1. It is the easiest. You can also click any lesson in the list above.</p><button class="btn pri" id="go1" style="margin-top:20px;font-size:19px">Start Lesson 1</button></div>`;
+ $('#go1').onclick=()=>{ci=0;setView('l');chapter(0)};document.querySelectorAll('[data-go]').forEach(li=>{const go=()=>{setView('l');chapter(+li.dataset.go)};li.onclick=go;li.onkeydown=e=>{if(e.key==='Enter')go()}})}
+function setView(v){stop();if($('#src')){codes[ci]=$('#src').value;persist()}document.querySelectorAll('#vw button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===v));
+ if(v==='s')intro();else if(v==='w')workshop();else if(v==='a')atlas('f');else if(v==='p')chapter(CH.findIndex(c=>c.pg));else chapter(lastL)}
+function goPG(code){const i=CH.findIndex(c=>c.pg);codes[i]=code;persist();ci=i;setView('p')}
+function atlas(tab){stop();if($('#src')){codes[ci]=$('#src').value;persist()}$('.wrap').classList.add('ws');
+ const T=[['f','What Lox can do'],['c','Interpreter or compiler?'],['m','Make your own language'],['g','Glossary'],['b','Badges']],card=x=>`<div class="card">${x}</div>`;let h=card(`<h2>Info</h2><p class="lead">Extra reading. You can skip all of this.</p><div class="seg" id="atabs" style="margin-top:10px">${T.map(([k,n])=>`<button data-t="${k}" aria-pressed="${k===tab}">${n}</button>`).join('')}</div>`);
+ if(tab==='f')h+=card(`<h3>What Lox can do</h3><p class="lead">Lox is a small language from the book Crafting Interpreters by Robert Nystrom. Press Try it to run an example in Practice.</p><table class="lg">${FEAT.map((f,i)=>`<tr><td><b>${f[0]}</b></td><td><code>${esc(f[1].split('\n')[0])}${f[1].includes('\n')?' ...':''}</code></td><td><button class="btn" data-try="${i}">Try it</button></td></tr>`).join('')}</table><h3 style="margin-top:16px">What Lox does not have</h3><p class="lead">No lists, no remainder operator (the samples build one called mod), no way to read input, no imports.</p>`);
+ if(tab==='c')h+=card(`<h3>Interpreter or compiler?</h3><p class="lead">A compiler translates the whole program first, then runs it. An interpreter reads the program and runs it as it goes. Neither is better. Each has a cost.</p><table class="lg"><tr><th></th><th>Interpreter</th><th>Compiler</th></tr><tr><td>Starts</td><td>At once</td><td>After translating</td></tr><tr><td>Speed</td><td>Slower</td><td>Faster</td></tr><tr><td>Mistakes</td><td>Found when that line runs</td><td>Many found before running</td></tr><tr><td>Moving to another machine</td><td>Works where the interpreter works</td><td>Needs one build per machine</td></tr><tr><td>Good for</td><td>Learning, scripts, quick tests</td><td>Games, systems, heavy work</td></tr></table><p class="lead" style="margin-top:12px"><b>Where Lox sits.</b> clox does both. It compiles your code to bytecode, then a small virtual machine runs the bytecode. Python and Java work the same way.</p>`);
+ if(tab==='m')h+=card(`<h3>Make your own language</h3><p class="lead">Each step below is a lesson. Do them in order and you know how a real language is built. In Customize you can rename keywords to words in any language (an extra of this site: real clox allows only English letters).</p><ol class="ins" style="font-size:16px">${ROAD.map(r=>`<li><b>${r[0]}.</b> ${r[1]} <span class="dm">(${r[2]})</span></li>`).join('')}</ol><p class="lead" style="margin-top:12px"><b>Where next.</b> Read Crafting Interpreters by Robert Nystrom, free at craftinginterpreters.com. It builds this language twice, in Java and in C.</p>`);
+ if(tab==='g')h+=card(`<h3>Glossary</h3><table class="lg">${GL.map(g=>`<tr><td><b>${g[0]}</b></td><td>${g[1]}</td></tr>`).join('')}</table>`);
+ if(tab==='b')h+=card(`<h3>Badges</h3><p class="lead">Level ${Math.floor(xp()/50)+1}, ${xp()} XP. Each badge is worth 10 XP and each solved lesson 20 XP.</p><div class="rc">${BD.map(b=>`<div class="rcb" style="cursor:default;opacity:${earned.has(b[0])?1:.55}"><small>${earned.has(b[0])?'Unlocked':'Locked'}</small><b>${b[1]}</b>${b[2]}</div>`).join('')}</div>`);
+ $('#main').innerHTML=h;$('#atabs').onclick=e=>{const b=e.target.closest('button');if(b)atlas(b.dataset.t)};document.querySelectorAll('[data-try]').forEach(b=>b.onclick=()=>goPG(rw(FEAT[+b.dataset.try][1],{},LEX)))}
+
+// UI. Startup: themes, save/load file, header buttons, first view. Runs last.
+// Classic script (no modules): files share one global scope and load in the order listed in src/index.html.
+const TH=[['light','Light'],['paper','Paper'],['dark','Ocean']];
+const TT=new Set(),setT=t=>{TT.add(t);if(TT.size>=3)award('style');document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}document.querySelectorAll('#th button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t))};
+$('#th').innerHTML=TH.map(([k,n])=>`<button data-t="${k}">${n}</button>`).join('');
+$('#th').onclick=e=>{const b=e.target.closest('button');if(b)setT(b.dataset.t)};
+let t0;
+try{t0=localStorage.getItem('theme')}catch(e){}
+setT(t0||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+try{codes=JSON.parse(localStorage.getItem('codes')||'{}');LEX=JSON.parse(localStorage.getItem('lex')||'{}');PRE=localStorage.getItem('pre')||''}catch(e){}
+mk();
+lvl();
+$('#vw').onclick=e=>{const b=e.target.closest('button');if(b)setView(b.dataset.v)};
+$('#lvl').onclick=()=>{setView('a');atlas('b')};
+document.addEventListener('click',e=>{const d=document.querySelector('.mn');if(d&&!d.contains(e.target))d.open=false});
+$('#sv').onclick=()=>{award('safe');if($('#src'))codes[ci]=$('#src').value;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({v:1,done:[...done],badges:[...earned],codes,lex:LEX,pre:PRE,theme:document.documentElement.dataset.theme})],{type:'application/json'}));a.download='life-of-a-line-of-code-save.json';a.click()};
+$('#ld').onchange=async e=>{try{const o=JSON.parse(await e.target.files[0].text());codes=o.codes||{};LEX=o.lex||{};mk();PRE=o.pre||'';done=new Set(o.done||[]);earned=new Set(o.badges||[...earned]);try{localStorage.setItem('done',JSON.stringify([...done]));localStorage.setItem('badges',JSON.stringify([...earned]))}catch(x){}lvl();persist();if(o.theme)setT(o.theme);chapter(ci)}catch(x){alert('That file is not a save file from this page.')}};
+// HOME, LEVELS, PROGRESS. Each lesson has 3 levels: 1 Watch (the example), 2 Try (a new program), 3 Challenge (the task).
+const LV2=['print 2 + 3 * 4;','var x = 5;\n{\n  var y = x + 1;\n  print y;\n}\nprint x;','var n = 3;\nwhile (n > 0) {\n  print n;\n  n = n - 1;\n}','fun double(n) {\n  return n * 2;\n}\nprint double(double(3));','fun adder(x) {\n  fun add(y) {\n    return x + y;\n  }\n  return add;\n}\nvar add10 = adder(10);\nprint add10(5);','class Dog {\n  bark() {\n    print "Woof!";\n  }\n}\nvar d = Dog();\nd.bark();','var a = "hi" + "!";\nvar b = a + a;\nprint b;','var a = 1;\nprint b;','var s = "";\nfor (var i = 0; i < 12; i = i + 1) {\n  s = s + "x";\n}\nprint s;','print 2 * 3 + 4 * 5;'];
+const ICO=['➕','📦','🔁','🪟','🎒','🧩','🧠','🐞','♻️','⚡'];
+let lvd={},curLv={};try{lvd=JSON.parse(localStorage.getItem('lvd')||'{}')}catch(e){}
+const lessonIx=()=>CH.map((c,i)=>i).filter(i=>!CH[i].pg&&CH[i].p),lvdone=i=>(lvd[i]||[]).length+(done.has(i)?1:0);
+const pct=i=>{const g=(PG[i]||[]).length,v=Math.min((pgv[i]||[]).length,g);const z=qzs[i]?qzs[i].best/qzs[i].total:0;return Math.round(100*(v+lvdone(i)+z)/(g+4))};
+const overall=()=>{const L=lessonIx();return Math.round(L.reduce((a,i)=>a+pct(i),0)/L.length)};
+const toastMsg=m=>{const x=document.createElement('div');x.className='toast';x.textContent=m;document.body.append(x);setTimeout(()=>x.remove(),2800)};
+function markLv(i,l){const a=lvd[i]=lvd[i]||[];if(a.includes(l))return;a.push(l);try{localStorage.setItem('lvd',JSON.stringify(lvd))}catch(e){}toastMsg('Level '+(l+1)+' complete');rail();const b=document.querySelectorAll('.lvb button')[l];if(b)b.firstElementChild.textContent='✓'}
+function syncLv(){const f=document.querySelector('.lvs .pbar i');if(!f||CH[ci].pg)return;f.style.width=pct(ci)+'%';document.querySelector('.lvh .dm').textContent='Chapter progress '+pct(ci)+'%';const b=document.querySelectorAll('.lvb button')[2];if(b&&done.has(ci))b.firstElementChild.textContent='✓'}
+function openLevel(i,l){curLv[i]=l;chapter(i);$('#src').value=rw(l===1?LV2[i]:CH[i].p,{},LEX);recompute()}
+// QUIZZES. Three questions per lesson (Classes already has its own). Correct answer is listed first, then rotated.
+const Q=(q,o,why,code)=>{const k=q.length%o.length,r=o.slice(k).concat(o.slice(0,k));return{id:'q'+q.length,q,code,opts:r,a:r.indexOf(o[0]),why}};
+const QZ={
+0:[Q('Where does the computer keep 1 and 2 before adding them?',['On a pile called the stack','In a file on disk','On the screen','Inside the keyboard'],'Values go on the stack. Then ADD takes the top two.'),
+ Q('What does this program print?',['14','20','24','9'],'Multiplication goes first. 3 * 4 is 12. Then 2 + 12 is 14.','print 2 + 3 * 4;'),
+ Q('After ADD finishes 1 + 2, what is left on the pile?',['Just 3','1 and 2','Nothing','1 and 3'],'ADD removes the top two values and puts their sum back.')],
+1:[Q('What happens when this program runs?',['An error: b is not defined','It prints 20','It prints 10','It prints nil'],'b was made inside { } and thrown away at the closing }. Then print b cannot find it.','var a = 10;\n{\n  var b = a * 2;\n}\nprint b;'),
+ Q('When is a variable made inside { } thrown away?',['At the closing }','When the program ends','Never','When you print it'],'The block ends at }. Its boxes go away there. This is called scope.'),
+ Q('What does this program print?',['5','1','4','x'],'x starts at 1. Then x = x + 4 saves 5 back in the same box.','var x = 1;\nx = x + 4;\nprint x;')],
+2:[Q('What does a loop do when it reaches the end of its body?',['Jumps back up and tests the condition again','Stops the program','Deletes its variables','Prints the answer'],'A loop is just a jump back up. It stops when the condition becomes false.'),
+ Q('What does this program print?',['0','3','1','nil'],'n goes 3, 2, 1, 0. At 0 the condition n > 0 is false, so the loop stops.','var n = 3;\nwhile (n > 0) {\n  n = n - 1;\n}\nprint n;'),
+ Q('A loop whose condition never becomes false...',['Never stops by itself','Stops after 10 times','Runs only once','Gives an error at once'],'It keeps jumping back. This page stops it after many steps so your browser is safe.')],
+3:[Q('What does this program print?',['6','3','1','9'],'fact(3) is 3 * fact(2). That is 3 * 2 * fact(1). fact(1) is 1. So the answer is 6.','fun fact(n) {\n  if (n <= 1) return 1;\n  return n * fact(n - 1);\n}\nprint fact(3);'),
+ Q('What is the call stack?',['The pile of windows for calls that are still waiting','A list of all variables','The screen','A kind of loop'],'Each call gets its own window with its own values. Calls that wait sit in the stack.'),
+ Q('What stops fact from calling itself for ever?',['The if line that returns 1','The print line','The variable n','Nothing. It just ends'],'That line is the base case. Without it the windows pile up until the stack overflows.')],
+4:[Q('What is a closure?',['A function plus the variables it remembers','A loop that repeats','An error message','A kind of number'],'A closure carries the variables it uses, even after the outer function has finished.'),
+ Q('What does this program print?',['2','1','0','nil'],'c() was called twice. The same i is kept in the closure, so it counts 1 then 2.','fun makeCounter() {\n  var i = 0;\n  fun count() {\n    i = i + 1;\n    return i;\n  }\n  return count;\n}\nvar c = makeCounter();\nc();\nprint c();'),
+ Q('makeCounter has finished. Why does count still know i?',['i moved into a backpack that count keeps','i is a global variable','The computer guesses','It does not know i'],'When the desk is cleared, a captured variable is moved to a backpack (an upvalue) on the heap.')],
+6:[Q('Why does text live on the heap and not on the pile?',['Text can be any length, so it needs a room of its own','Text is faster there','The pile cannot hold letters','It is a rule of print'],'Numbers are small and fixed. Text can grow, so it gets a cell on the heap.'),
+ Q('What does s = s + "a" do to memory?',['Builds a new piece of text in a new cell','Changes the old text in place','Deletes s','Nothing'],'Text is never changed in place. Every + builds a new piece, and the old one is left behind.'),
+ Q('A variable that holds text is like...',['An arrow pointing at a cell','A copy of the cell','The cell itself','The whole heap'],'The variable stores where the text lives. Cut the arrow and nothing points at the text any more.')],
+7:[Q('What kind of mistake is this?',['One found before the program runs','One found while it runs','Not a mistake','A memory mistake'],'The code does not follow the rules of the language. The compiler stops it before anything runs.','print 1 +;'),
+ Q('When does the computer notice the mistake in this program?',['While running, when it reaches print b','Before running','Never','When you save'],'The code is valid, but b was never made. The error appears only when that line runs.','var a = 1;\nprint b;'),
+ Q('What should you do first when you see an error message?',['Read the line number and the message','Delete the program','Restart the computer','Ignore it'],'The message names the line and the problem. Start there.')],
+8:[Q('What is garbage in a program?',['Data that nothing can reach any more','Data that is old','Data that is big','Data that was printed'],'Age and size do not matter. Garbage means no variable can reach it.'),
+ Q('Which cells does the collector mark?',['The ones reachable from variables','The first ones made','The biggest ones','Random ones'],'It follows every arrow that starts at a variable and ticks each cell it reaches.'),
+ Q('What does the sweep step do?',['Frees every cell that was not marked','Frees every cell','Marks the cells','Prints the cells'],'Marked cells are still in use. Everything else is garbage and is freed.')],
+9:[Q('What can an optimizer do before the program runs?',['Work out 26 once so it is not worked out again','Change the answer','Skip the print','Rename the variables'],'2 * 3 + 4 * 5 uses only fixed numbers, so the answer can be found early.','print 2 * 3 + 4 * 5;'),
+ Q('An optimization must never...',['Change what the program prints','Use fewer steps','Be tested','Run quickly'],'The program must give the same answer. Only the work changes.'),
+ Q('What is constant folding?',['Doing sums of fixed numbers once, early','Folding the file in half','Deleting constants','Making a loop'],'The sum is done by the compiler. The machine just uses the result.')]};
+const _ch=chapter;chapter=function(i){_ch(i);const c=CH[i];if(c.pg||!LV2[i])return;const L=lvd[i]||[],k=curLv[i]||0;
+ $('.card .lead').insertAdjacentHTML('beforebegin',`<div class="lvs"><div class="lvh"><b>Levels</b><span class="dm">Chapter progress ${pct(i)}%</span></div><span class="pbar"><i style="width:${pct(i)}%"></i></span><div class="lvb">${['Watch','Try','Challenge'].map((n,j)=>`<button class="btn${j===k?' on':''}" data-l="${j}"><span>${(j<2?L.includes(j):done.has(i))?'✓':j+1}</span>Level ${j+1}: ${n}</button>`).join('')}</div></div>`);
+ document.querySelectorAll('.lvb button').forEach(b=>b.onclick=()=>openLevel(i,+b.dataset.l));
+ if(!PG[i]&&QZ[i]){const b=document.createElement('div');b.className='card qcard';b.innerHTML='<h3>Quick quiz</h3><p class="lead">Three questions. See how much you learnt.</p><div id="qbox"></div>';$('#main').insertBefore(b,$('.nav'));const bx=b.querySelector('#qbox');if(bx){quiz(i,{qs:QZ[i]},bx);b.addEventListener('click',()=>setTimeout(rail,60))}}};
+const _go=go;go=function(d){_go(d);if(P&&R&&pos>=0&&pos>=R.log.length-1&&!CH[ci].pg&&(curLv[ci]||0)<2)markLv(ci,curLv[ci]||0)};
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#run')&&CH[ci].v==='err'&&(curLv[ci]||0)<2)markLv(ci,curLv[ci]||0)});
+const _rl=rail;rail=function(){_rl();$('#pb').style.width=overall()+'%';$('#prog').textContent='Overall progress '+overall()+'%';syncLv()};
+function home(){stop();if($('#src')){codes[ci]=$('#src').value;persist()}$('.wrap').classList.add('ws');try{localStorage.setItem('seen','1')}catch(e){}
+ document.querySelectorAll('#vw button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v==='s'));
+ const L=lessonIx(),all=overall(),ix=n=>CH.findIndex(c=>c.n===n),nx=i=>Math.min(lvdone(i),2);
+ const T=[['👀','See every line run','Step through any program.',()=>openLevel(0,0)],['🗑️','Watch variables vanish','Scope, in action.',()=>openLevel(1,0)],['♻️','Garbage collection','Cells fill, then dissolve.',()=>openLevel(ix('Garbage collection'),0)],['✏️','Use your own keywords','Rename print, var, if.',()=>setView('w')]];
+ const card=i=>{const c=CH[i],p=pct(i),k=lvdone(i);return`<button class="cc" data-i="${i}" style="--d:${i*50}ms"><span class="ci">${ICO[i]||'📘'}</span><b>${i+1}. ${esc(c.n)}</b><span class="dm">${esc(c.q)}</span><span class="dots">${[0,1,2].map(j=>`<i class="${j<k?'on':''}"></i>`).join('')}<small>${k} of 3 levels${qzs[i]?' · quiz '+qzs[i].best+'/'+qzs[i].total:''}</small></span><span class="pbar"><i style="width:${p}%"></i></span><span class="go">${p?(p>=100?'Review':'Continue'):'Start'} · ${p}% learnt</span></button>`};
+ $('#main').innerHTML=`<div class="card hero hm"><span class="hk">Learn how code runs</span><h1>After you press Run</h1><p class="big">Watch a program run one line at a time. See variables made and thrown away. See the garbage collector clean up. Change the words of the language itself.</p><div class="ctl"><button class="btn pri pulse" id="hgo">${all?'Continue learning':'Start learning'}</button><button class="btn" id="hprac">Write my own program</button></div><div class="hall"><span>Overall progress <b>${all}%</b></span><span class="pbar"><i style="width:${all}%"></i></span></div></div>
+ <div class="feat">${T.map((f,j)=>`<button class="ft" data-f="${j}"><span>${f[0]}</span><b>${f[1]}</b><small>${f[2]}</small></button>`).join('')}</div>
+ <div class="card"><h2>Chapters and levels</h2><p class="lead">Every chapter has three levels. Your progress bar fills as you read the pages and finish the levels.</p><div class="lg3"><span><b>Level 1 Watch:</b> run the example</span><span><b>Level 2 Try:</b> run a new program</span><span><b>Level 3 Challenge:</b> change the code to solve the task</span></div></div>
+ <div class="cgrid">${L.map(card).join('')}</div><p style="text-align:center"><button class="btn" id="hstory">How does it all work inside? Read the full story</button></p>`;
+ document.querySelectorAll('.cc').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;openLevel(i,nx(i))});
+ document.querySelectorAll('.ft').forEach((b,j)=>b.onclick=T[j][3]);
+ $('#hgo').onclick=()=>{const i=L.find(i=>pct(i)<100);const j=i===undefined?L[0]:i;openLevel(j,nx(j))};$('#hprac').onclick=()=>setView('p');$('#hstory').onclick=()=>intro();rail()}
+const _sv=setView;setView=function(v){if(v==='s'){home()}else _sv(v)};
+let sn;
+try{sn=localStorage.getItem('seen')}catch(e){}
+setView('s');
+</script></body></html>
