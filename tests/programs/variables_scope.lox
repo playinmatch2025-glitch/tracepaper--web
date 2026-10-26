@@ -1,0 +1,16 @@
+var a = 10;
+{
+  var b = a * 2;
+  print b - 5;      // expect: 15
+}
+print a;            // expect: 10
+{
+  var a = "shadow";
+  print a;          // expect: shadow
+}
+print a;            // expect: 10
+var c;
+print c;            // expect: nil
+a = 3;
+print a = 4;        // expect: 4
+print a;            // expect: 4

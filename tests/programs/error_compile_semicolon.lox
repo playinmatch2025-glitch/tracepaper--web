@@ -1,0 +1,3 @@
+// expect-compile-error
+print 1 + 2
+print 3;

@@ -1,0 +1,15 @@
+if (true) print "yes"; else print "no";    // expect: yes
+if (nil) print "yes"; else print "no";     // expect: no
+print true and false;                      // expect: false
+print nil or "default";                    // expect: default
+print 1 and 2;                             // expect: 2
+var i = 0;
+while (i < 3) { print i; i = i + 1; }      // expect: 0
+                                           // expect: 1
+                                           // expect: 2
+var sum = 0;
+for (var k = 1; k <= 10; k = k + 1) sum = sum + k;
+print sum;                                 // expect: 55
+for (var j = 0; j < 2; j = j + 1) { print "row"; }
+                                           // expect: row
+                                           // expect: row

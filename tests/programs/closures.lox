@@ -1,0 +1,35 @@
+fun makeCounter() {
+  var i = 0;
+  fun count() { i = i + 1; return i; }
+  return count;
+}
+var c = makeCounter();
+print c();          // expect: 1
+print c();          // expect: 2
+var d = makeCounter();
+print d();          // expect: 1
+print c();          // expect: 3
+
+fun outer() {
+  var x = "outside";
+  fun inner() { return x; }
+  return inner;
+}
+print outer()();    // expect: outside
+
+fun pair() {
+  var shared = 0;
+  fun inc() { shared = shared + 1; }
+  fun get() { return shared; }
+  inc();
+  inc();
+  return get;
+}
+print pair()();     // expect: 2
+
+fun adder(n) {
+  fun add(x) { return x + n; }
+  return add;
+}
+var add5 = adder(5);
+print add5(10);     // expect: 15

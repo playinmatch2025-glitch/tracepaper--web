@@ -1,0 +1,18 @@
+// Closures created and dropped in a loop must not corrupt the ones we keep.
+fun make(n) {
+  var v = "n" + "=";
+  fun get() { return v + "x"; }
+  return get;
+}
+var last;
+for (var i = 0; i < 500; i = i + 1) { last = make(i); }
+print last();       // expect: n=x
+
+fun counter() {
+  var n = 0;
+  fun inc() { n = n + 1; return n; }
+  return inc;
+}
+var c = counter();
+for (var j = 0; j < 400; j = j + 1) { var junk = counter(); junk(); c(); }
+print c();          // expect: 401

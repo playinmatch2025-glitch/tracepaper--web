@@ -1,0 +1,3 @@
+// expect-compile-error
+// clox-only: jlox reports this in the Resolver (book ch.11), which is out of scope here
+return 1;
